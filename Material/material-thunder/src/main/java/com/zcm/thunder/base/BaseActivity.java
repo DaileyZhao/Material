@@ -37,12 +37,17 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         if (mPresenter==null){
             mPresenter=getPresenter();
         }
-        if(useEventBus()){
-            EventBus.getDefault().register(this);
-        }
         setContentView(setViewById());
         mUnbinder= ButterKnife.bind(this);
         initData();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(useEventBus()){
+            EventBus.getDefault().register(this);
+        }
     }
 
     @Override
