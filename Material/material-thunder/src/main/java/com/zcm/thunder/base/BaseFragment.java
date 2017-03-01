@@ -48,18 +48,18 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-        if (useEventBus()){
-            EventBus.getDefault().register(this);
-        }
-    }
-
-    @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if (mPresenter==null){
             mPresenter=getPresenter();
+        }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        if (useEventBus()){
+            EventBus.getDefault().register(this);
         }
     }
 
@@ -84,6 +84,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
         mUnbinder=null;
         mRootView=null;
     }
+
 
     /**
      * 是否使用eventBus,默认为不使用(true)，

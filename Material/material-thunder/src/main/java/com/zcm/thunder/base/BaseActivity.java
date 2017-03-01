@@ -7,14 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import com.zcm.thunder.R;
 import com.zcm.thunder.mvp.IBaseView;
 import com.zcm.thunder.mvp.IPresenter;
+import com.zcm.ui.swipebacklayout.SwipeBackLayout;
+import com.zcm.ui.swipebacklayout.Utils;
+import com.zcm.ui.swipebacklayout.app.SwipeBackActivityBase;
+import com.zcm.ui.swipebacklayout.app.SwipeBackActivityHelper;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import de.greenrobot.event.EventBus;
-import me.imid.swipebacklayout.lib.SwipeBackLayout;
-import me.imid.swipebacklayout.lib.Utils;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivityBase;
-import me.imid.swipebacklayout.lib.app.SwipeBackActivityHelper;
 
 /**
  * Created by ZCM on 17-2-22 下午6:23.
@@ -28,6 +28,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     private SwipeBackActivityHelper mHelper;
     private Unbinder mUnbinder;
     protected P mPresenter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +52,20 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter!=null){
+            mPresenter.onDestroy();
+        }
+        if(useEventBus()){
+            EventBus.getDefault().unregister(this);
+        }
+        if (mUnbinder!=Unbinder.EMPTY) mUnbinder.unbind();
+        mPresenter=null;
+        mUnbinder=null;
+    }
+
+    @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mHelper.onPostCreate();
@@ -64,19 +79,6 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         }
     }
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (mPresenter!=null){
-            mPresenter.onDestroy();
-        }
-        if(useEventBus()){
-            EventBus.getDefault().unregister(this);
-        }
-        if (mUnbinder!=Unbinder.EMPTY) mUnbinder.unbind();
-        mPresenter=null;
-        mUnbinder=null;
-    }
     @Override
     public SwipeBackLayout getSwipeBackLayout() {
         return mHelper.getSwipeBackLayout();
