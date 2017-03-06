@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.zcm.ui.R;
 import com.zcm.ui.swipebacklayout.SwipeBackLayout;
-import com.zcm.ui.swipebacklayout.Utils;
+import com.zcm.ui.swipebacklayout.SwipeBackUtils;
 
 /**
  * @author Yrom
@@ -35,7 +35,7 @@ public class SwipeBackActivityHelper {
 
             @Override
             public void onEdgeTouch(int edgeFlag) {
-                Utils.convertActivityToTranslucent(mActivity);
+                SwipeBackUtils.convertActivityToTranslucent(mActivity);
             }
 
             @Override

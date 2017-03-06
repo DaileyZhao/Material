@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.zcm.ui.swipebacklayout.SwipeBackLayout;
-import com.zcm.ui.swipebacklayout.Utils;
+import com.zcm.ui.swipebacklayout.SwipeBackUtils;
 
 public class SwipeBackActivity extends AppCompatActivity implements SwipeBackActivityBase {
     private SwipeBackActivityHelper mHelper;
@@ -44,7 +44,7 @@ public class SwipeBackActivity extends AppCompatActivity implements SwipeBackAct
 
     @Override
     public void scrollToFinishActivity() {
-        Utils.convertActivityToTranslucent(this);
+        SwipeBackUtils.convertActivityToTranslucent(this);
         getSwipeBackLayout().scrollToFinishActivity();
     }
 }

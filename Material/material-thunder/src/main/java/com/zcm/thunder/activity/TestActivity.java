@@ -1,5 +1,6 @@
 package com.zcm.thunder.activity;
 
+import android.content.Intent;
 import android.widget.ImageButton;
 
 import com.zcm.thunder.R;
@@ -25,6 +26,7 @@ public class TestActivity extends BaseActivity {
     @Override
     protected void initData() {
         setSwipeBackEnable(true);
+        startActivity(new Intent(this,Test2Activity.class));
     }
 
     @Override

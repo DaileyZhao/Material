@@ -3,12 +3,13 @@ package com.zcm.thunder.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.zcm.thunder.R;
 import com.zcm.thunder.mvp.IBaseView;
 import com.zcm.thunder.mvp.IPresenter;
 import com.zcm.ui.swipebacklayout.SwipeBackLayout;
-import com.zcm.ui.swipebacklayout.Utils;
+import com.zcm.ui.swipebacklayout.SwipeBackUtils;
 import com.zcm.ui.swipebacklayout.app.SwipeBackActivityBase;
 import com.zcm.ui.swipebacklayout.app.SwipeBackActivityHelper;
 
@@ -38,9 +39,11 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         if (mPresenter==null){
             mPresenter=getPresenter();
         }
+        if (setViewById()!=0)
         setContentView(setViewById());
         mUnbinder= ButterKnife.bind(this);
         initData();
+        Log.d(TAG, "onCreate: ");
     }
 
     @Override
@@ -49,6 +52,24 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         if(useEventBus()){
             EventBus.getDefault().register(this);
         }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume: ");
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.d(TAG, "onPause: ");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.d(TAG, "onStop: ");
     }
 
     @Override
@@ -95,14 +116,14 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     @Override
     public void scrollToFinishActivity() {
-        Utils.convertActivityToTranslucent(this);
+        SwipeBackUtils.convertActivityToTranslucent(this);
         getSwipeBackLayout().scrollToFinishActivity();
     }
 
     @Override
     public void finish() {
         super.finish();
-        overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
+        //overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
     }
     /**
      * 是否使用eventBus,默认为不使用(true)，

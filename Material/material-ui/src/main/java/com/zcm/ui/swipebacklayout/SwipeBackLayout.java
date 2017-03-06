@@ -20,6 +20,7 @@ import java.util.List;
 
 /**
  * https://github.com/ikew0ng/SwipeBackLayout
+ * 左划返回layout
  */
 public class SwipeBackLayout extends FrameLayout {
     /**
