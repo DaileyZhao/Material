@@ -39,4 +39,6 @@ dependencies {
 
     //EventBus
     compile 'de.greenrobot:eventbus:2.4.0'
+    //MultiDex
+    compile 'com.android.support:multidex:1.0.0'
 }

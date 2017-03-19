@@ -1,5 +1,3 @@
-package com.zcm.thunder;
-
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
@@ -9,6 +7,10 @@ import android.support.multidex.MultiDex;
  */
 
 public class XApplication extends Application {
+    private static Context context;
+    public static Context getAppContext(){
+        return context;
+    }
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
@@ -18,5 +20,6 @@ public class XApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        context=this;
     }
 }
