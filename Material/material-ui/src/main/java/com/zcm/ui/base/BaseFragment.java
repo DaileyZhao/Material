@@ -1,4 +1,4 @@
-package com.zcm.thunder.base;
+package com.zcm.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -7,8 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.zcm.thunder.mvp.IBaseView;
-import com.zcm.thunder.mvp.IPresenter;
+
+import com.zcm.ui.mvp.IBaseView;
+import com.zcm.ui.mvp.IPresenter;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -19,7 +20,7 @@ import de.greenrobot.event.EventBus;
  * 与BaseActivity结构相同的BaseFragment，功能陆续完善
  */
 
-public abstract class BaseFragment<P extends IPresenter> extends Fragment implements IBaseView{
+public abstract class BaseFragment<P extends IPresenter> extends Fragment implements IBaseView {
     protected final String TAG=this.getClass().getSimpleName();
     protected P mPresenter;
     protected View mRootView;

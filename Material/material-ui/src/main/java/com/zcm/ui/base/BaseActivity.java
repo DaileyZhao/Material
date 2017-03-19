@@ -1,13 +1,12 @@
-package com.zcm.thunder.base;
+package com.zcm.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
-import com.zcm.thunder.R;
-import com.zcm.thunder.mvp.IBaseView;
-import com.zcm.thunder.mvp.IPresenter;
+import com.zcm.ui.mvp.IBaseView;
+import com.zcm.ui.mvp.IPresenter;
 import com.zcm.ui.swipebacklayout.SwipeBackLayout;
 import com.zcm.ui.swipebacklayout.SwipeBackUtils;
 import com.zcm.ui.swipebacklayout.app.SwipeBackActivityBase;

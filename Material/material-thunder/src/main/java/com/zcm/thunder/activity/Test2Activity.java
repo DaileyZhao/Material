@@ -1,7 +1,8 @@
 package com.zcm.thunder.activity;
 
-import com.zcm.thunder.base.BaseActivity;
-import com.zcm.thunder.mvp.IPresenter;
+
+import com.zcm.ui.base.BaseActivity;
+import com.zcm.ui.mvp.IPresenter;
 
 /**
  * Created by zhaocunming on 2017/3/5.

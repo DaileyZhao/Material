@@ -1,4 +1,4 @@
-package com.zcm.thunder.mvp;
+package com.zcm.ui.mvp;
 
 import de.greenrobot.event.EventBus;
 

@@ -1,4 +1,4 @@
-package com.zcm.thunder.mvp;
+package com.zcm.ui.mvp;
 
 /**
  * Created by ZCM on 17-2-28 下午12:06.
