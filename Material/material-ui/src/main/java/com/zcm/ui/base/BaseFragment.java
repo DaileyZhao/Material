@@ -57,6 +57,9 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     @Override
     public void onStart() {
         super.onStart();
+        if (mPresenter!=null){
+            mPresenter.onStart();
+        }
         if (useEventBus()){
             EventBus.getDefault().register(this);
         }

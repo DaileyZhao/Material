@@ -30,14 +30,16 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (mHelper==null)
+        if (mHelper==null){
             mHelper= new SwipeBackActivityHelper(this);
+        }
         mHelper.onActivityCreate();
         if (mPresenter==null){
             mPresenter=getPresenter();
         }
-        if (setViewById()!=0)
+        if (setViewById()!=0){
         setContentView(setViewById());
+        }
         ButterKnife.bind(this);
         initData();
         Log.d(TAG, "onCreate: ");
@@ -46,6 +48,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     protected void onStart() {
         super.onStart();
+        if (mPresenter!=null){
+            mPresenter.onStart();
+        }
         if(useEventBus()){
             EventBus.getDefault().register(this);
         }
