@@ -13,7 +13,6 @@ import com.zcm.ui.swipebacklayout.app.SwipeBackActivityBase;
 import com.zcm.ui.swipebacklayout.app.SwipeBackActivityHelper;
 
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -26,7 +25,6 @@ import de.greenrobot.event.EventBus;
 public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IBaseView,SwipeBackActivityBase {
     protected final String TAG=this.getClass().getSimpleName();
     private SwipeBackActivityHelper mHelper;
-    private Unbinder mUnbinder;
     protected P mPresenter;
 
     @Override
@@ -40,7 +38,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         }
         if (setViewById()!=0)
         setContentView(setViewById());
-        mUnbinder= ButterKnife.bind(this);
+        ButterKnife.bind(this);
         initData();
         Log.d(TAG, "onCreate: ");
     }
@@ -80,9 +78,8 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         if(useEventBus()){
             EventBus.getDefault().unregister(this);
         }
-        if (mUnbinder!=Unbinder.EMPTY) mUnbinder.unbind();
+       ButterKnife.unbind(this);
         mPresenter=null;
-        mUnbinder=null;
     }
 
     @Override

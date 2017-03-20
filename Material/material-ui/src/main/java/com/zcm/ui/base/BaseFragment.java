@@ -12,7 +12,6 @@ import com.zcm.ui.mvp.IBaseView;
 import com.zcm.ui.mvp.IPresenter;
 
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -24,7 +23,6 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     protected final String TAG=this.getClass().getSimpleName();
     protected P mPresenter;
     protected View mRootView;
-    protected Unbinder mUnbinder;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +36,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mRootView=initView(inflater,container);
-        mUnbinder= ButterKnife.bind(this,mRootView);
+        ButterKnife.bind(this,mRootView);
         return mRootView;
     }
 
@@ -67,9 +65,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (mUnbinder!=Unbinder.EMPTY){
-            mUnbinder.unbind();
-        }
+        ButterKnife.unbind(this);
     }
 
     @Override
@@ -82,7 +78,6 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
             mPresenter.onDestroy();
         }
         mPresenter=null;
-        mUnbinder=null;
         mRootView=null;
     }
 

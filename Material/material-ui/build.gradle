@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.neenbedankt.android-apt'
+
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.1"
@@ -25,6 +25,5 @@ dependencies {
     //材料设计控件库
     compile 'com.android.support:design:23.2.0'
     // Butterknife
-    compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
+    compile 'com.jakewharton:butterknife:7.0.1'
 }

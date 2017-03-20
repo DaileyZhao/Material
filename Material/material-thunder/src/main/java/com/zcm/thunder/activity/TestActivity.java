@@ -9,7 +9,7 @@ import com.zcm.thunder.fragment.TestDialog;
 import com.zcm.ui.base.BaseActivity;
 import com.zcm.ui.mvp.IPresenter;
 
-import butterknife.BindView;
+import butterknife.Bind;
 import butterknife.OnClick;
 
 /**
@@ -18,7 +18,7 @@ import butterknife.OnClick;
 
 public class TestActivity extends BaseActivity {
 
-    @BindView(R.id.imgbtn_test)
+    @Bind(R.id.imgbtn_test)
     ImageButton imgbtn_test;
 
     @Override
