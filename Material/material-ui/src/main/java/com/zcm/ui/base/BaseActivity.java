@@ -3,8 +3,16 @@ package com.zcm.ui.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
 
+import com.zcm.ui.R;
+import com.zcm.ui.basetitle.BaseTitleView;
 import com.zcm.ui.mvp.IBaseView;
 import com.zcm.ui.mvp.IPresenter;
 import com.zcm.ui.swipebacklayout.SwipeBackLayout;
@@ -24,67 +32,46 @@ import de.greenrobot.event.EventBus;
 
 public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IBaseView,SwipeBackActivityBase {
     protected final String TAG=this.getClass().getSimpleName();
+    protected FrameLayout fm_title;
+    protected BaseTitleView bt_title;
+    private ViewFlipper layout_container;
     private SwipeBackActivityHelper mHelper;
     protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (mHelper==null){
-            mHelper= new SwipeBackActivityHelper(this);
+        if (mHelper == null) {
+            mHelper = new SwipeBackActivityHelper(this);
         }
         mHelper.onActivityCreate();
-        if (mPresenter==null){
-            mPresenter=getPresenter();
+        if (mPresenter == null) {
+            mPresenter = getPresenter();
         }
-        if (setViewById()!=0){
-        setContentView(setViewById());
-        }
-        ButterKnife.bind(this);
-        initData();
-        Log.d(TAG, "onCreate: ");
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        if (mPresenter!=null){
+        if (mPresenter != null) {
             mPresenter.onStart();
         }
-        if(useEventBus()){
+        if (useEventBus()) {
             EventBus.getDefault().register(this);
         }
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        Log.d(TAG, "onResume: ");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.d(TAG, "onPause: ");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.d(TAG, "onStop: ");
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (mPresenter!=null){
+        if (mPresenter != null) {
             mPresenter.onDestroy();
         }
-        if(useEventBus()){
+        if (useEventBus()) {
             EventBus.getDefault().unregister(this);
         }
-       ButterKnife.unbind(this);
-        mPresenter=null;
+        ButterKnife.unbind(this);
+        mPresenter = null;
     }
 
     @Override
@@ -96,11 +83,41 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-        if (mPresenter!=null){
-            mPresenter=getPresenter();
+        if (mPresenter == null) {
+            mPresenter = getPresenter();
         }
     }
 
+    @Override
+    public void setContentView(View view) {
+        // 初始化公共头部
+        layout_container = (ViewFlipper) findViewById(R.id.layout_container);
+        fm_title=(FrameLayout) findViewById(R.id.fm_title);
+        bt_title=(BaseTitleView) findViewById(R.id.bt_title);
+        bt_title.getLeftTextView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                left_click();
+            }
+        });
+        bt_title.getRightTextView().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                right_click();
+            }
+        });
+        bt_title.setLeftImageResources(R.drawable.icon_back);
+        LinearLayout.LayoutParams layoutParams =
+                new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 1);
+        layout_container.addView(view,layoutParams);
+    }
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(R.layout.baseactivity_layout);
+        View view = LayoutInflater.from(this).inflate(layoutResID, null);
+        setContentView(view);
+        ButterKnife.bind(this);
+    }
     @Override
     public SwipeBackLayout getSwipeBackLayout() {
         return mHelper.getSwipeBackLayout();
@@ -108,6 +125,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
 
     /**
      * 继承该基类的activity可以设置是否支持滑动退出
+     *
      * @param enable
      */
     @Override
@@ -124,10 +142,9 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     public void finish() {
         super.finish();
-        //overridePendingTransition(R.anim.alpha_in, R.anim.alpha_out);
     }
     /**
-     * 是否使用eventBus,默认为不使用(true)，
+     * 是否使用eventBus,默认为使用(false)，
      *
      * @return
      */
@@ -136,23 +153,65 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     }
 
     /**
-     * 设置布局，在setContentView中调用
-     * @return
-     */
-    protected abstract int setViewById();
-
-    /**
-     * 初始化参数,加载数据,在onCreate方法中调用
-     */
-    protected abstract void initData();
-
-    /**
      * 获取view对应的Presenter
+     *
      * @return
      */
     protected abstract P getPresenter();
 
-    public void showLoading(){}
+    @Override
+    public void showLoading() {
+    }
 
-    public void hideLoading(){}
+    @Override
+    public void hideLoading() {
+    }
+
+    /**
+     * 设置activity标题
+     * @param title
+     */
+    protected void setActivityTitle(String title){
+        bt_title.setTitleText(title);
+    }
+    protected void setActivityTitle(int title){
+        setActivityTitle(getString(title));
+    }
+    /**
+     * 设置是否显示标题栏
+     * @param visibility
+     */
+    protected void setTitleVisibility(int visibility){
+        bt_title.setVisibility(visibility);
+    }
+    /**
+     * 设置自定义标题栏
+     * @param view
+     */
+    protected void setTitleView(View view){
+        if(view !=null){
+            fm_title.removeAllViews();
+            fm_title.addView( view);
+        }
+    }
+    protected FrameLayout getFl_titleBar(){
+        return fm_title;
+    }
+
+    /**
+     * 左侧按钮点击事件
+     */
+    protected void left_click(){finish();}
+
+    /**
+     * 右侧按钮点击事件
+     */
+    protected void right_click(){}
+    protected void showToast(String content) {
+        Toast.makeText(this, content, Toast.LENGTH_SHORT).show();
+    }
+
+    protected void showLongToast(String content) {
+        Toast.makeText(this, content, Toast.LENGTH_LONG).show();
+    }
 }

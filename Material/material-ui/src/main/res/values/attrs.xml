@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <declare-styleable name="BaseTitleView">
+        <attr name="leftText" format="reference"/>
+        <attr name="leftRes" format="reference"/> ,
+        <attr name="titleText" format="reference"/>
+        <attr name="rightText" format="reference"/>
+        <attr name="rightRes" format="reference"/>
+        <attr name="lineShow" format="boolean"/>
+    </declare-styleable>
     <declare-styleable name="SwipeBackLayout">
         <attr name="edge_size" format="dimension"/>
         <attr name="edge_flag">

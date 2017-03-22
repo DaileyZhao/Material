@@ -1,6 +1,7 @@
 package com.zcm.thunder.activity;
 
-import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -22,14 +23,10 @@ public class TestActivity extends BaseActivity {
     ImageButton imgbtn_test;
 
     @Override
-    protected int setViewById() {
-        return R.layout.activity_test;
-    }
-
-    @Override
-    protected void initData() {
-        setSwipeBackEnable(true);
-        //startActivity(new Intent(this,Test2Activity.class));
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_test);
+        setActivityTitle(R.string.app_name);
     }
 
     @Override
