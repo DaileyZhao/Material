@@ -23,7 +23,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.+'
     compile 'com.android.support:recyclerview-v7:23.+'
     //材料设计控件库
-    compile 'com.android.support:design:23.2.0'
+    compile 'com.android.support:design:23.+'
     // Butterknife
     compile 'com.jakewharton:butterknife:7.0.1'
 }
