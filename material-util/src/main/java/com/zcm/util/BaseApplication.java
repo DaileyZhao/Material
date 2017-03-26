@@ -8,7 +8,7 @@ import android.support.multidex.MultiDex;
  * Created by ZCM on 17-2-22 下午4:07.
  */
 
-public class XApplication extends Application {
+public class BaseApplication extends Application {
     private static Context context;
     public static Context getAppContext(){
         return context;
@@ -22,6 +22,6 @@ public class XApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        context=this;
+        context=this.getApplicationContext();
     }
 }

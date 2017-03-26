@@ -8,5 +8,5 @@ import android.content.Context;
  */
 
 public class FileUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
 }

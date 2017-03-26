@@ -23,7 +23,7 @@ import java.util.List;
  */
 
 public class SystemUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
 
     /**
      * 检查权限

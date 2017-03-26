@@ -12,7 +12,7 @@ import android.view.WindowManager;
  */
 
 public class DisplayUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
     /**
      * dp2px
      */

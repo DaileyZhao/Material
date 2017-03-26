@@ -12,7 +12,7 @@ import android.net.Uri;
  */
 
 public class ClipboardUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
     private ClipboardUtils() {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }

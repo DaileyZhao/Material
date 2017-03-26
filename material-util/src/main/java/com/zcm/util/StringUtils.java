@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
  */
 
 public class StringUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
     /**
      * @param str md5加密
      * @return

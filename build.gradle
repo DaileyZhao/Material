@@ -20,3 +20,23 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+//Define buildVersion
+ext{
+    buildToolsVersion="23.0.1"
+    compileSdkVersion=23
+    minSdkVersion=14
+    targetSdkVersion=23
+    versionCode=1
+    versionName="1.0"
+    javaVersion=org.gradle.api.JavaVersion.VERSION_1_8
+
+    supportLibraryVersion="23.+"
+    retrofitVersion="2.1.0"
+    glideVersion="3.7.0"
+    eventbusVersion="2.4.0"
+    okhttpVersion="3.4.1"
+    rxjavaVersion="1.1.10"
+    rxandroidVersion="1.2.1"
+    multidexVersion="1.0.0"
+    butterknifeVersion="7.0.1"
+}

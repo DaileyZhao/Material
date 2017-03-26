@@ -30,7 +30,7 @@ import java.util.Set;
  * </ul>
  */
 public class PreferencesUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
 
     public static final String PREFERENCE_NAME = "setting";
 

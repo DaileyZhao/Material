@@ -19,7 +19,7 @@ import java.util.Enumeration;
  */
 
 public class NetUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
     /**
      * 是否连接WIFI
      */

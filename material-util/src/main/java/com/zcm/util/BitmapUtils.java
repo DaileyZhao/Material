@@ -27,7 +27,7 @@ import java.io.OutputStream;
  */
 
 public class BitmapUtils {
-    private static Context context= XApplication.getAppContext();
+    private static Context context= BaseApplication.getAppContext();
     /**
      * 在左下角绘制logo
      *
