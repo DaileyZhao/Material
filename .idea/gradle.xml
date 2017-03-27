@@ -8,9 +8,8 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/material-lib-support" />
             <option value="$PROJECT_DIR$/material-thunder" />
-            <option value="$PROJECT_DIR$/material-ui" />
-            <option value="$PROJECT_DIR$/material-util" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
