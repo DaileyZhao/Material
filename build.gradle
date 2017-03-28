@@ -28,7 +28,7 @@ ext{
     targetSdkVersion=23
     versionCode=1
     versionName="1.0"
-    javaVersion=org.gradle.api.JavaVersion.VERSION_1_8
+    javaVersion=JavaVersion.VERSION_1_8
 
     supportLibraryVersion="23.+"
     retrofitVersion="2.1.0"

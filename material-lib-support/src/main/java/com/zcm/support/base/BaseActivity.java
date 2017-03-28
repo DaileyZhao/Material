@@ -3,9 +3,11 @@ package com.zcm.support.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -34,13 +36,14 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     protected final String TAG=this.getClass().getSimpleName();
     protected FrameLayout fm_title;
     protected BaseTitleView bt_title;
-    private ViewFlipper layout_container;
+    private FrameLayout layout_container;
     private SwipeBackActivityHelper mHelper;
     protected P mPresenter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         BaseApplication.getIns().addActivity(this);
         if (mHelper == null) {
             mHelper = new SwipeBackActivityHelper(this);
@@ -93,7 +96,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     @Override
     public void setContentView(View view) {
         // 初始化公共头部
-        layout_container = (ViewFlipper) findViewById(R.id.layout_container);
+        layout_container = (FrameLayout) findViewById(R.id.layout_container);
         fm_title=(FrameLayout) findViewById(R.id.fm_title);
         bt_title=(BaseTitleView) findViewById(R.id.bt_title);
         bt_title.getLeftTextView().setOnClickListener(new View.OnClickListener() {
@@ -180,20 +183,13 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
         setActivityTitle(getString(title));
     }
     /**
-     * 设置是否显示标题栏
-     * @param visibility
-     */
-    protected void setTitleVisibility(int visibility){
-        bt_title.setVisibility(visibility);
-    }
-    /**
      * 设置自定义标题栏
      * @param view
      */
     protected void setTitleView(View view){
         if(view !=null){
             fm_title.removeAllViews();
-            fm_title.addView( view);
+            fm_title.addView(view);
         }
     }
     protected FrameLayout getFl_titleBar(){
