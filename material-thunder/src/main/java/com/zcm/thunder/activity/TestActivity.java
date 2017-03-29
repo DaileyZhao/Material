@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.zcm.support.base.BaseActivity;
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.utils.DisplayUtils;
@@ -25,15 +27,15 @@ public class TestActivity extends BaseActivity {
 
     @Bind(R.id.imgbtn_test)
     ImageButton imgbtn_test;
-    @Bind(R.id.tv_time)
-    TextView tv_time;
+    @Bind(R.id.img_launch)
+    ImageView img_launch;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test);
         setActivityTitle(R.string.app_name);
-        tv_time.setText(SystemUtils.isForeground()+"");
+        Glide.with(this).load("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1490769498540&di=14625f84ff992a47b0af66718560b738&imgtype=0&src=http%3A%2F%2Fimgb.mumayi.com%2Fandroid%2Fwallpaper%2F2012%2F01%2F21%2Fsl_600_2012012101535755738287.jpg").into(img_launch);
     }
 
     @Override
