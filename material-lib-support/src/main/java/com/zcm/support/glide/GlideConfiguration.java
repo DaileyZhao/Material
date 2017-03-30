@@ -1,4 +1,4 @@
-package com.zcm.support.Glide;
+package com.zcm.support.glide;
 
 import android.content.Context;
 

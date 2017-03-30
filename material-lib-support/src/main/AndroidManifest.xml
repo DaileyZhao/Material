@@ -26,7 +26,7 @@
     <uses-permission android:name="com.videogo.open.permission.C2D_MESSAGE" />
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <application>
-        <meta-data android:name="com.zcm.support.Glide.GlideConfiguration"
+        <meta-data android:name="com.zcm.support.glide.GlideConfiguration"
             android:value="GlideModule"/>
     </application>
 </manifest>
