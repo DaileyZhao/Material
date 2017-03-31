@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.webview.WebViewActivity;
+import com.zcm.support.widget.ActionSheetDialog;
 import com.zcm.thunder.R;
 import com.zcm.thunder.fragment.TestDialog;
 
@@ -41,7 +42,27 @@ public class TestActivity extends THBaseActivity {
     }
     @OnClick(R.id.imgbtn_test)
     public void onClick(View view){
-        new TestDialog().show(getSupportFragmentManager(),"imagebutton");
-        startActivity(new Intent(TestActivity.this, WebViewActivity.class));
+        //new TestDialog().show(getSupportFragmentManager(),"imagebutton");
+        //startActivity(new Intent(TestActivity.this, WebViewActivity.class));
+        new ActionSheetDialog(this)
+                .builder()
+                .setCancelable(true)
+                .setCanceledOnTouchOutside(true)
+                .addSheetItem(
+                        "保存到相册1",
+                        ActionSheetDialog.SheetItemColor.Blue,
+                        new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+                            }
+                        })
+                .addSheetItem(
+                        "保存到相册",
+                        ActionSheetDialog.SheetItemColor.Blue,
+                        new ActionSheetDialog.OnSheetItemClickListener() {
+                            @Override
+                            public void onClick(int which) {
+                            }
+                        }).show();
     }
 }

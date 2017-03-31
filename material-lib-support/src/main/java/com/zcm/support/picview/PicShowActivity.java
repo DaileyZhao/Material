@@ -11,6 +11,8 @@ import com.zcm.support.mvp.IPresenter;
 import java.util.ArrayList;
 
 /**
+ *  git@github.com:freecats/WebImageViewer.git
+ *  查看图片的activity
  * Created by zcm on 17-3-31.
  */
 

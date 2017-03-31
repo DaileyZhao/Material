@@ -6,4 +6,7 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="line">#c9c9c9</color>
+    <color name="actionsheet_gray">#8F8F8F</color>
+    <color name="actionsheet_blue">#037BFF</color>
+    <color name="toast_backgrournd">#4a4949</color>
 </resources>

@@ -31,6 +31,8 @@ import java.util.ArrayList;
 
 /**
  * Created by zcm on 17-3-30.
+ * 查看图片的源码地址
+ *  git@github.com:freecats/WebImageViewer.git
  */
 
 public class WebViewActivity extends BaseActivity {
