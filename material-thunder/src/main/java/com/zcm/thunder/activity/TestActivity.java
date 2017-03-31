@@ -1,5 +1,6 @@
 package com.zcm.thunder.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.zcm.support.mvp.IPresenter;
+import com.zcm.support.webview.WebViewActivity;
 import com.zcm.thunder.R;
 import com.zcm.thunder.fragment.TestDialog;
 
@@ -40,5 +42,6 @@ public class TestActivity extends THBaseActivity {
     @OnClick(R.id.imgbtn_test)
     public void onClick(View view){
         new TestDialog().show(getSupportFragmentManager(),"imagebutton");
+        startActivity(new Intent(TestActivity.this, WebViewActivity.class));
     }
 }

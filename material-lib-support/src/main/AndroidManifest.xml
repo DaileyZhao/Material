@@ -28,5 +28,8 @@
     <application>
         <meta-data android:name="com.zcm.support.glide.GlideConfiguration"
             android:value="GlideModule"/>
+        <activity android:name=".webview.WebViewActivity"
+            android:launchMode="singleTask"/>
+        <activity android:name=".picview.PicShowActivity"/>
     </application>
 </manifest>
