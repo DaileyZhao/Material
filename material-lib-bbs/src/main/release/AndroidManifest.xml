@@ -2,7 +2,8 @@
     package="com.zcm.bbs">
 
     <application>
-        <activity android:name=".BBSActivity"/>
+        <activity android:name=".BBSActivity">
+        </activity>
     </application>
 
 </manifest>

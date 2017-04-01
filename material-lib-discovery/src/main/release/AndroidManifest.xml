@@ -2,7 +2,9 @@
     package="com.zcm.discovery">
 
     <application>
-        <activity android:name=".DiscoveryActivity"/>
+        <activity android:name=".DiscoveryActivity">
+
+        </activity>
     </application>
 
 </manifest>
