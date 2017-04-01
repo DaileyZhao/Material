@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zcm.discovery">
+
+    <application>
+        <activity android:name=".DiscoveryActivity"/>
+    </application>
+
+</manifest>

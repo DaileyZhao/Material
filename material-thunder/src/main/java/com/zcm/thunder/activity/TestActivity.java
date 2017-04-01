@@ -8,6 +8,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.zcm.discovery.DiscoveryActivity;
+import com.zcm.router.Router;
+import com.zcm.router.rule.ActivityRule;
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.webview.WebViewActivity;
 import com.zcm.support.widget.ActionSheetDialog;
@@ -42,27 +45,31 @@ public class TestActivity extends THBaseActivity {
     }
     @OnClick(R.id.imgbtn_test)
     public void onClick(View view){
+        if (Router.isExistRouter(ActivityRule.ACTIVITY_SCHEME + "bbs.main")) {
+            Intent it = Router.invoke(TestActivity.this, ActivityRule.ACTIVITY_SCHEME + "bbs.main");
+            startActivity(it);
+        }
         //new TestDialog().show(getSupportFragmentManager(),"imagebutton");
         //startActivity(new Intent(TestActivity.this, WebViewActivity.class));
-        new ActionSheetDialog(this)
-                .builder()
-                .setCancelable(true)
-                .setCanceledOnTouchOutside(true)
-                .addSheetItem(
-                        "保存到相册1",
-                        ActionSheetDialog.SheetItemColor.Blue,
-                        new ActionSheetDialog.OnSheetItemClickListener() {
-                            @Override
-                            public void onClick(int which) {
-                            }
-                        })
-                .addSheetItem(
-                        "保存到相册",
-                        ActionSheetDialog.SheetItemColor.Blue,
-                        new ActionSheetDialog.OnSheetItemClickListener() {
-                            @Override
-                            public void onClick(int which) {
-                            }
-                        }).show();
+//        new ActionSheetDialog(this)
+//                .builder()
+//                .setCancelable(true)
+//                .setCanceledOnTouchOutside(true)
+//                .addSheetItem(
+//                        "保存到相册1",
+//                        ActionSheetDialog.SheetItemColor.Blue,
+//                        new ActionSheetDialog.OnSheetItemClickListener() {
+//                            @Override
+//                            public void onClick(int which) {
+//                            }
+//                        })
+//                .addSheetItem(
+//                        "保存到相册",
+//                        ActionSheetDialog.SheetItemColor.Blue,
+//                        new ActionSheetDialog.OnSheetItemClickListener() {
+//                            @Override
+//                            public void onClick(int which) {
+//                            }
+//                        }).show();
     }
 }

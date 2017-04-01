@@ -42,5 +42,12 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':material-lib-support')
+    if (!isModule.toBoolean()){
+
+    }else {
+        compile project(':material-lib-support')
+        compile project(':material-lib-router')
+        compile project(':material-lib-bbs')
+        compile project(':material-lib-discovery')
+    }
 }

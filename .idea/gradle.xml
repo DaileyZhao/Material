@@ -8,6 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/material-lib-bbs" />
+            <option value="$PROJECT_DIR$/material-lib-discovery" />
+            <option value="$PROJECT_DIR$/material-lib-router" />
             <option value="$PROJECT_DIR$/material-lib-support" />
             <option value="$PROJECT_DIR$/material-thunder" />
           </set>
