@@ -46,7 +46,6 @@ dependencies {
 
     }else {
         compile project(':material-lib-support')
-        compile project(':material-lib-router')
         compile project(':material-lib-bbs')
         compile project(':material-lib-discovery')
     }
