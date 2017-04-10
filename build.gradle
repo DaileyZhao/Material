@@ -14,6 +14,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
     }
 }
 
@@ -41,4 +42,5 @@ ext{
     butterknifeVersion="7.0.1"
     glidePaletteVersion="2.0.1"
     glideTransformationsVersion="2.0.2"
+    baseAdapterHelperVersion="2.9.9"
 }

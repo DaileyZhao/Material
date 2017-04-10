@@ -95,6 +95,12 @@ public class TestActivity extends THBaseActivity {
                                 }).show();
             }
         });
-        item_names.add(new TestItem(""));
+        item_names.add(new TestItem("BaseAdapterHelper用法"){
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                startActivity(new Intent(TestActivity.this,BaseAdapterAct.class));
+            }
+        });
     }
 }
