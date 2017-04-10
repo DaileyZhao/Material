@@ -3,7 +3,6 @@ package com.zcm.support.base;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.view.Window;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-import android.widget.ViewFlipper;
 
 import com.zcm.support.R;
 import com.zcm.support.basetitle.BaseTitleView;

@@ -39,4 +39,6 @@ ext{
     rxandroidVersion="1.2.1"
     multidexVersion="1.0.1"
     butterknifeVersion="7.0.1"
+    glidePaletteVersion="2.0.1"
+    glideTransformationsVersion="2.0.2"
 }

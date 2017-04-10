@@ -3,15 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-<ImageButton
-    android:id="@+id/imgbtn_test"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:src="@mipmap/ic_launcher"/>
-    <ImageView
-        android:id="@+id/img_launch"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/function_list"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"/>
+        android:layout_height="match_parent"/>
 </LinearLayout>
