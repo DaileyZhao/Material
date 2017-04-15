@@ -1,12 +1,19 @@
 package com.zcm.thunder.activity;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.webview.WebViewActivity;
@@ -17,10 +24,16 @@ import com.zcm.thunder.adapter.FuncListAdapter;
 import com.zcm.thunder.model.TestItem;
 import com.zcm.thunder.presenter.TestPresenter;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
+import retrofit2.Retrofit;
 
 /**
  * Created by ZCM on 17-2-28 下午4:01.
@@ -102,5 +115,17 @@ public class TestActivity extends THBaseActivity {
                 startActivity(new Intent(TestActivity.this,BaseAdapterAct.class));
             }
         });
+        item_names.add(new TestItem("retrofit测试"){
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+
+            }
+        });
+    }
+    private void getWeather(){
+        Retrofit retrofit=new Retrofit.Builder()
+                .baseUrl("")
+                .build();
     }
 }

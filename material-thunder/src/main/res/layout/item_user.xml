@@ -9,7 +9,8 @@
     android:foreground="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="4dp"
-    app:cardUseCompatPadding="true">
+    app:cardUseCompatPadding="false"
+    app:cardElevation="1dp">
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">

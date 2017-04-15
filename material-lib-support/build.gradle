@@ -26,7 +26,7 @@ dependencies {
     //材料设计控件库
     compile "com.android.support:design:$rootProject.supportLibraryVersion"
     // Okhttp
-    compile "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
+    //compile "com.squareup.okhttp3:okhttp:$rootProject.okhttpVersion"
     compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttpVersion"
 
     // Retrofit

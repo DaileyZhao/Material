@@ -17,9 +17,6 @@ android {
         debug {
         }
         relealse {
-            storePassword "demo123456"
-            keyAlias "demo_4"
-            keyPassword "demo123456"
         }
     }
     buildTypes {
