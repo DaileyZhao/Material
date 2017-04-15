@@ -56,7 +56,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     protected void onStart() {
         super.onStart();
         if (mPresenter != null) {
-            mPresenter.onStart();
+            mPresenter.onStart(this);
         }
         if (useEventBus()) {
             EventBus.getDefault().register(this);

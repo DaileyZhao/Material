@@ -58,7 +58,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     public void onStart() {
         super.onStart();
         if (mPresenter!=null){
-            mPresenter.onStart();
+            mPresenter.onStart(this);
         }
         if (useEventBus()){
             EventBus.getDefault().register(this);

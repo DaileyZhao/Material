@@ -5,6 +5,6 @@ package com.zcm.support.mvp;
  */
 
 public interface IPresenter<V extends IBaseView> {
-    void onStart();
+    void onStart(V view);
     void onDestroy();
 }
