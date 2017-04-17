@@ -1,5 +1,6 @@
 package com.zcm.support.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.zcm.router.Router;
+import com.zcm.router.rule.ActivityRule;
 import com.zcm.support.R;
 import com.zcm.support.basetitle.BaseTitleView;
+import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IBaseView;
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.swipebacklayout.SwipeBackLayout;
@@ -30,7 +34,8 @@ import de.greenrobot.event.EventBus;
  * Rxjava的订阅与退订阅还没有添加
  */
 
-public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivity implements IBaseView,SwipeBackActivityBase {
+public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V>> extends AppCompatActivity
+        implements IBaseView,SwipeBackActivityBase {
     protected final String TAG=this.getClass().getSimpleName();
     protected FrameLayout fm_title;
     protected BaseTitleView bt_title;
@@ -56,7 +61,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     protected void onStart() {
         super.onStart();
         if (mPresenter != null) {
-            mPresenter.onStart(this);
+            mPresenter.onStart();
         }
         if (useEventBus()) {
             EventBus.getDefault().register(this);
@@ -95,6 +100,7 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     public void setContentView(View view) {
         // 初始化公共头部
         layout_container = (FrameLayout) findViewById(R.id.layout_container);
+        layout_container.setBackgroundColor(getResources().getColor(R.color.white));
         fm_title=(FrameLayout) findViewById(R.id.fm_title);
         bt_title=(BaseTitleView) findViewById(R.id.bt_title);
         bt_title.getLeftTextView().setOnClickListener(new View.OnClickListener() {
@@ -146,6 +152,14 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     public void finish() {
         super.finish();
     }
+    public void reload() {
+        Intent intent = getIntent();
+        overridePendingTransition(0, 0);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        finish();
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+    }
     /**
      * 是否使用eventBus,默认为使用(false)，
      *
@@ -154,6 +168,12 @@ public abstract class BaseActivity<P extends IPresenter> extends AppCompatActivi
     protected boolean useEventBus() {
         return false;
     }
+
+    protected void onNavigatedTo(String activityName){
+        if (Router.isExistRouter(ActivityRule.ACTIVITY_SCHEME + activityName)) {
+        }
+    }
+
 
     /**
      * 获取view对应的Presenter

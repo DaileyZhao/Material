@@ -1,19 +1,13 @@
 package com.zcm.thunder.activity;
 
-import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageManager;
-import android.os.Build;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.webview.WebViewActivity;
@@ -24,11 +18,6 @@ import com.zcm.thunder.adapter.FuncListAdapter;
 import com.zcm.thunder.model.TestItem;
 import com.zcm.thunder.presenter.TestPresenter;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,8 +54,8 @@ public class TestActivity extends THBaseActivity {
     }
 
     @Override
-    protected IPresenter getPresenter() {
-        return new TestPresenter();
+    protected TestPresenter getPresenter() {
+        return new TestPresenter(this);
     }
     private void setView(){
         funcAdapter=new FuncListAdapter(item_names,this);
@@ -115,11 +104,15 @@ public class TestActivity extends THBaseActivity {
                 startActivity(new Intent(TestActivity.this,BaseAdapterAct.class));
             }
         });
-        item_names.add(new TestItem("retrofit测试"){
+        item_names.add(new TestItem("intent测试"){
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-
+                Intent intent=new Intent();
+                intent.setAction(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_TEXT, "Hi,我正在学习RxJava,推荐你下载这个app一起学习吧 到应用商店或者https://github.com/jiang111/RxJavaApp/releases即可下载");
+                intent.setType("text/plain");
+                startActivity(Intent.createChooser(intent, "分享到"));
             }
         });
     }

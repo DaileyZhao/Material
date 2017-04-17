@@ -6,6 +6,8 @@ buildscript {
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -29,7 +31,6 @@ ext{
     targetSdkVersion=23
     versionCode=1
     versionName="1.0"
-    javaVersion=JavaVersion.VERSION_1_8
 
     supportLibraryVersion="23.+"
     retrofitVersion="2.1.0"

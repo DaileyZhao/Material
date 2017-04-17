@@ -27,7 +27,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (mPresenter!=null){
+        if (mPresenter==null){
             mPresenter=getPresenter();
         }
     }
@@ -58,7 +58,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     public void onStart() {
         super.onStart();
         if (mPresenter!=null){
-            mPresenter.onStart(this);
+            mPresenter.onStart();
         }
         if (useEventBus()){
             EventBus.getDefault().register(this);

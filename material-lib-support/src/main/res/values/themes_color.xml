@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- daymodel -->
+    <color name="day_color">#ffffff</color>
+    <!--nightmodel-->
+    <color name="night_color">#ff3c3c3c</color>
+</resources>

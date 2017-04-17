@@ -6,6 +6,7 @@ import android.support.v4.view.ViewPager;
 
 import com.zcm.support.R;
 import com.zcm.support.base.BaseActivity;
+import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IPresenter;
 
 import java.util.ArrayList;
@@ -79,7 +80,7 @@ public class PicShowActivity extends BaseActivity {
     }
 
     @Override
-    protected IPresenter getPresenter() {
+    protected BasePresenter getPresenter() {
         return null;
     }
 }

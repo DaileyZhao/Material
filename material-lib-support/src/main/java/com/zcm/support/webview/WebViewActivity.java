@@ -24,6 +24,7 @@ import android.webkit.WebViewClient;
 
 import com.zcm.support.R;
 import com.zcm.support.base.BaseActivity;
+import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.picview.PicShowActivity;
 
@@ -129,7 +130,7 @@ public class WebViewActivity extends BaseActivity {
                     + " })()");
     }
     @Override
-    protected IPresenter getPresenter() {
+    protected BasePresenter getPresenter() {
         return null;
     }
 

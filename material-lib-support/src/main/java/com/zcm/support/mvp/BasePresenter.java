@@ -11,6 +11,9 @@ import de.greenrobot.event.EventBus;
 public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
     protected final String TAG=this.getClass().getSimpleName();
     private WeakReference<V> viewRef;
+    public BasePresenter(V view){
+        viewRef=new WeakReference<V>(view);
+    }
     /**
      * 是否使用eventBus,默认为使用(true)，
      *
@@ -20,8 +23,7 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
         return true;
     }
     @Override
-    public void onStart(V view) {
-        viewRef=new WeakReference<V>(view);
+    public void onStart() {
         if (useEventBus())//如果要使用eventbus请将此方法返回true
             EventBus.getDefault().register(this);//注册eventbus
     }

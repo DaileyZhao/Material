@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Window;
 
+import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IPresenter;
 import com.zcm.thunder.R;
 import com.zcm.thunder.adapter.SuperRVAdapter;
@@ -32,7 +33,7 @@ public class BaseAdapterAct extends THBaseActivity {
     }
 
     @Override
-    protected IPresenter getPresenter() {
+    protected BasePresenter getPresenter() {
         return null;
     }
 }

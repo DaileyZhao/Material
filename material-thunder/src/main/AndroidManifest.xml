@@ -14,8 +14,7 @@
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.BaseAdapterAct"
-            android:theme="@style/NoTitleTranslucentTheme"/>
+        <activity android:name=".activity.BaseAdapterAct" />
     </application>
 
 </manifest>
