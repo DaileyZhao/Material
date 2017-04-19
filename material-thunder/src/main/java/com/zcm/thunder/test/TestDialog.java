@@ -1,4 +1,4 @@
-package com.zcm.thunder.fragment;
+package com.zcm.thunder.test;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -51,4 +51,7 @@ dependencies {
     }else {
         compile project(':material-lib-support')
     }
+    //主moudle中单独引用butterknife,解决nullPointerException
+    compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
+    apt "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
 }

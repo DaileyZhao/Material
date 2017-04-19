@@ -1,5 +1,7 @@
 package com.zcm.support.mvp;
 
+import android.support.annotation.Nullable;
+
 import java.lang.ref.WeakReference;
 
 import de.greenrobot.event.EventBus;
@@ -14,13 +16,17 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
     public BasePresenter(V view){
         viewRef=new WeakReference<V>(view);
     }
+    @Nullable
+    public V getView() {
+        return viewRef == null ? null : viewRef.get();
+    }
     /**
-     * 是否使用eventBus,默认为使用(true)，
+     * 是否使用eventBus,默认为使用(false)，
      *
      * @return
      */
     protected boolean useEventBus() {
-        return true;
+        return false;
     }
     @Override
     public void onStart() {

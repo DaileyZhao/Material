@@ -8,6 +8,7 @@ buildscript {
         classpath "com.android.tools.build:gradle:$localGradlePluginVersion"
         classpath 'me.tatarka:gradle-retrolambda:3.2.5'
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.jakewharton:butterknife-gradle-plugin:8.4.0'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -40,7 +41,7 @@ ext{
     rxjavaVersion="1.1.10"
     rxandroidVersion="1.2.1"
     multidexVersion="1.0.1"
-    butterknifeVersion="7.0.1"
+    butterknifeVersion="8.4.0"
     glidePaletteVersion="2.0.1"
     glideTransformationsVersion="2.0.2"
     baseAdapterHelperVersion="2.9.9"

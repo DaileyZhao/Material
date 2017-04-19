@@ -31,5 +31,7 @@
         <activity android:name=".webview.WebViewActivity"
             android:launchMode="singleTask"/>
         <activity android:name=".picview.PicShowActivity"/>
+        <activity android:name=".webview.BrowserActivity"
+            android:launchMode="singleTask"/>
     </application>
 </manifest>

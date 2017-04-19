@@ -1,4 +1,4 @@
-package com.zcm.thunder.adapter;
+package com.zcm.thunder.recyclerview;
 
 import android.content.Context;
 import android.view.View;
@@ -8,9 +8,9 @@ import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.zcm.thunder.R;
-import com.zcm.thunder.model.ThunderBean;
+import com.zcm.thunder.test.ThunderBean;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -31,7 +31,7 @@ public class SuperRVAdapter extends BaseQuickAdapter<ThunderBean,SuperRVAdapter.
 
     }
     class UserViewHolder extends BaseViewHolder{
-        @Bind(R.id.img_header)
+        @BindView(R.id.img_header)
         ImageView img_header;
         public UserViewHolder(View view) {
             super(view);

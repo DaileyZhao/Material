@@ -1,4 +1,4 @@
-package com.zcm.thunder.model;
+package com.zcm.thunder.test;
 
 import java.util.ArrayList;
 import java.util.List;

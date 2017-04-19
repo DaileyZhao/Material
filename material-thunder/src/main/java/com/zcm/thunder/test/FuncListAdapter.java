@@ -1,4 +1,4 @@
-package com.zcm.thunder.adapter;
+package com.zcm.thunder.test;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.zcm.thunder.R;
-import com.zcm.thunder.model.TestItem;
 
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -44,7 +43,7 @@ public class FuncListAdapter extends RecyclerView.Adapter<FuncListAdapter.FuncVi
     }
 
     class FuncViewHolder extends RecyclerView.ViewHolder{
-        @Bind(R.id.btn_item_test)
+        @BindView(R.id.btn_item_test)
         Button itemButton;
         public FuncViewHolder(View itemView) {
             super(itemView);

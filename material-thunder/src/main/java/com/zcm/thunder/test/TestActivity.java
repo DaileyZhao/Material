@@ -1,28 +1,26 @@
-package com.zcm.thunder.activity;
+package com.zcm.thunder.test;
 
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.zcm.support.mvp.IPresenter;
-import com.zcm.support.webview.WebViewActivity;
+import com.zcm.router.Router;
+import com.zcm.router.rule.ActivityRule;
+import com.zcm.support.webview.BrowserActivity;
 import com.zcm.support.widget.ActionSheetDialog;
 import com.zcm.thunder.HomeWatcherReceiver;
 import com.zcm.thunder.R;
-import com.zcm.thunder.adapter.FuncListAdapter;
-import com.zcm.thunder.model.TestItem;
-import com.zcm.thunder.presenter.TestPresenter;
+import com.zcm.thunder.THBaseActivity;
+import com.zcm.thunder.recyclerview.BaseAdapterAct;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import retrofit2.Retrofit;
+import butterknife.BindView;
 
 /**
  * Created by ZCM on 17-2-28 下午4:01.
@@ -31,7 +29,7 @@ import retrofit2.Retrofit;
 public class TestActivity extends THBaseActivity {
 
     private HomeWatcherReceiver receiver=null;
-    @Bind(R.id.function_list)
+    @BindView(R.id.function_list)
     RecyclerView function_list;
     private List<TestItem> item_names;
     private FuncListAdapter funcAdapter;
@@ -76,7 +74,7 @@ public class TestActivity extends THBaseActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                startActivity(new Intent(TestActivity.this, WebViewActivity.class));
+                startActivity(new Intent(TestActivity.this, BrowserActivity.class));
             }
         });
         item_names.add(new TestItem("showSheetDialog"){
@@ -115,10 +113,15 @@ public class TestActivity extends THBaseActivity {
                 startActivity(Intent.createChooser(intent, "分享到"));
             }
         });
-    }
-    private void getWeather(){
-        Retrofit retrofit=new Retrofit.Builder()
-                .baseUrl("")
-                .build();
+        item_names.add(new TestItem("路由测试"){
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                if (Router.isExistRouter(ActivityRule.ACTIVITY_SCHEME + "discovery.main")) {
+                    Intent it = Router.invoke(TestActivity.this, ActivityRule.ACTIVITY_SCHEME + "discovery.main");
+                    startActivity(it);
+                }
+            }
+        });
     }
 }

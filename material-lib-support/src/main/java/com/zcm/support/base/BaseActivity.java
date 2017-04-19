@@ -18,13 +18,13 @@ import com.zcm.support.R;
 import com.zcm.support.basetitle.BaseTitleView;
 import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IBaseView;
-import com.zcm.support.mvp.IPresenter;
 import com.zcm.support.swipebacklayout.SwipeBackLayout;
 import com.zcm.support.swipebacklayout.SwipeBackUtils;
 import com.zcm.support.swipebacklayout.app.SwipeBackActivityBase;
 import com.zcm.support.swipebacklayout.app.SwipeBackActivityHelper;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import de.greenrobot.event.EventBus;
 
 /**
@@ -42,12 +42,12 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
     private FrameLayout layout_container;
     private SwipeBackActivityHelper mHelper;
     protected P mPresenter;
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
-        BaseApplication.getIns().addActivity(this);
         if (mHelper == null) {
             mHelper = new SwipeBackActivityHelper(this);
         }
@@ -71,14 +71,14 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        BaseApplication.getIns().finishActivity();
         if (mPresenter != null) {
             mPresenter.onDestroy();
         }
         if (useEventBus()) {
             EventBus.getDefault().unregister(this);
         }
-        ButterKnife.unbind(this);
+        unbinder.unbind();
+        //ButterKnife.unbind(this);
         mPresenter = null;
     }
 
@@ -125,7 +125,7 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
         super.setContentView(R.layout.baseactivity_layout);
         View view = LayoutInflater.from(this).inflate(layoutResID, null);
         setContentView(view);
-        ButterKnife.bind(this);
+        unbinder=ButterKnife.bind(this);
     }
     @Override
     public SwipeBackLayout getSwipeBackLayout() {

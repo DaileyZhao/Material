@@ -8,13 +8,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.TestActivity">
+        <activity android:name=".splash.LaunchActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER"/>
                 <action android:name="android.intent.action.MAIN"/>
             </intent-filter>
         </activity>
-        <activity android:name=".activity.BaseAdapterAct" />
+        <activity android:name=".test.TestActivity"/>
+        <activity android:name=".recyclerview.BaseAdapterAct" />
     </application>
 
 </manifest>
