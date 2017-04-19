@@ -20,8 +20,8 @@ import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IBaseView;
 import com.zcm.support.swipebacklayout.SwipeBackLayout;
 import com.zcm.support.swipebacklayout.SwipeBackUtils;
-import com.zcm.support.swipebacklayout.app.SwipeBackActivityBase;
-import com.zcm.support.swipebacklayout.app.SwipeBackActivityHelper;
+import com.zcm.support.swipebacklayout.SwipeBackActivityBase;
+import com.zcm.support.swipebacklayout.SwipeBackActivityHelper;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;

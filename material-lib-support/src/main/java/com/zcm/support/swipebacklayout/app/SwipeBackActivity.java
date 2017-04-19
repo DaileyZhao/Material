@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
+import com.zcm.support.swipebacklayout.SwipeBackActivityBase;
+import com.zcm.support.swipebacklayout.SwipeBackActivityHelper;
 import com.zcm.support.swipebacklayout.SwipeBackLayout;
 import com.zcm.support.swipebacklayout.SwipeBackUtils;
 

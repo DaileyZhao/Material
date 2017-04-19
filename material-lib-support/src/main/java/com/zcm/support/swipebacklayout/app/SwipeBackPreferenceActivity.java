@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.view.View;
 
+import com.zcm.support.swipebacklayout.SwipeBackActivityBase;
+import com.zcm.support.swipebacklayout.SwipeBackActivityHelper;
 import com.zcm.support.swipebacklayout.SwipeBackLayout;
 
 public class SwipeBackPreferenceActivity extends PreferenceActivity implements SwipeBackActivityBase {

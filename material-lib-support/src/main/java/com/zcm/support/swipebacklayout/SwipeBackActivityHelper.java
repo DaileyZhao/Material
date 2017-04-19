@@ -1,4 +1,4 @@
-package com.zcm.support.swipebacklayout.app;
+package com.zcm.support.swipebacklayout;
 
 import android.app.Activity;
 import android.graphics.Color;

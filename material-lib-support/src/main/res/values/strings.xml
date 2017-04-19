@@ -2,5 +2,5 @@
     <string name="app_name">MaterialUI</string>
     <!--toast_view_actionsheet-->
     <string name="cancel_toast_view_actionsheet">取消</string>
-    <string name="base_url">http://api.huceo.com/meinv/</string>
+    <string name="base_url"></string>
 </resources>
