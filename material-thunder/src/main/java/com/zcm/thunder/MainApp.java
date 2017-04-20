@@ -1,10 +1,13 @@
 package com.zcm.thunder;
 
+import android.app.Activity;
+
 import com.zcm.bbs.BBSActivity;
-import com.zcm.discovery.DiscoveryActivity;
 import com.zcm.router.Router;
-import com.zcm.router.rule.ActivityRule;
+import com.zcm.router.router.IActivityRouteTableInitializer;
 import com.zcm.support.base.BaseApplication;
+
+import java.util.Map;
 
 /**
  * Created by zcm on 2017/3/26.
@@ -18,7 +21,12 @@ public class MainApp extends BaseApplication {
     }
 
     private void setRouter(){
-        Router.router(ActivityRule.ACTIVITY_SCHEME+"bbs.main", BBSActivity.class);
-        Router.router(ActivityRule.ACTIVITY_SCHEME+"discovery.main", DiscoveryActivity.class);
+        Router.initBrowserRouter(getApplicationContext());
+        Router.initActivityRouter(getApplicationContext(), new IActivityRouteTableInitializer() {
+            @Override
+            public void initRouterTable(Map<String, Class<? extends Activity>> router) {
+                router.put("activity://bbs/", BBSActivity.class);
+            }
+        });
     }
 }

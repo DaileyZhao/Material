@@ -1,14 +1,11 @@
 package com.zcm.discovery;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.zcm.router.Router;
-import com.zcm.router.rule.ActivityRule;
 import com.zcm.support.base.BaseActivity;
 import com.zcm.support.mvp.BasePresenter;
 
@@ -31,10 +28,6 @@ public class DiscoveryActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(DiscoveryActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
-                if (Router.isExistRouter(ActivityRule.ACTIVITY_SCHEME + "bbs.main")) {
-                    Intent it = Router.invoke(DiscoveryActivity.this, ActivityRule.ACTIVITY_SCHEME + "bbs.main");
-                    startActivity(it);
-                }
             }
         });
     }

@@ -12,16 +12,14 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.zcm.router.Router;
-import com.zcm.router.rule.ActivityRule;
 import com.zcm.support.R;
 import com.zcm.support.basetitle.BaseTitleView;
 import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IBaseView;
-import com.zcm.support.swipebacklayout.SwipeBackLayout;
-import com.zcm.support.swipebacklayout.SwipeBackUtils;
 import com.zcm.support.swipebacklayout.SwipeBackActivityBase;
 import com.zcm.support.swipebacklayout.SwipeBackActivityHelper;
+import com.zcm.support.swipebacklayout.SwipeBackLayout;
+import com.zcm.support.swipebacklayout.SwipeBackUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -167,11 +165,6 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
      */
     protected boolean useEventBus() {
         return false;
-    }
-
-    protected void onNavigatedTo(String activityName){
-        if (Router.isExistRouter(ActivityRule.ACTIVITY_SCHEME + activityName)) {
-        }
     }
 
 

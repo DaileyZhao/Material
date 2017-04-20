@@ -32,6 +32,13 @@
             android:launchMode="singleTask"/>
         <activity android:name=".picview.PicShowActivity"/>
         <activity android:name=".webview.BrowserActivity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="com.zcm.action.browser"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:scheme="http" />
+                <data android:scheme="https" />
+            </intent-filter>
+        </activity>
     </application>
 </manifest>

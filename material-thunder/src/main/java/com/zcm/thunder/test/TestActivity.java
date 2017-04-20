@@ -9,7 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.zcm.router.Router;
-import com.zcm.router.rule.ActivityRule;
 import com.zcm.support.webview.BrowserActivity;
 import com.zcm.support.widget.ActionSheetDialog;
 import com.zcm.thunder.HomeWatcherReceiver;
@@ -117,10 +116,8 @@ public class TestActivity extends THBaseActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                if (Router.isExistRouter(ActivityRule.ACTIVITY_SCHEME + "discovery.main")) {
-                    Intent it = Router.invoke(TestActivity.this, ActivityRule.ACTIVITY_SCHEME + "discovery.main");
-                    startActivity(it);
-                }
+                Router.open("http://www.baidu.com");
+                //Router.open(TestActivity.this,"activity://bbs/");
             }
         });
     }

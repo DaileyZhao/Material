@@ -25,6 +25,11 @@ public class BrowserActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
+        if (getIntent()!=null){
+            if (getIntent().getData() != null) {
+                url = getIntent().getData().toString();
+            }
+        }
         //mBrowserLayout= (BrowserLayout) findViewById(R.id.layout_browser);
         bt_title.setRightImageResources(R.drawable.btn_refresh_pressed);
         bt_title.getRightTextView().setVisibility(View.GONE);
