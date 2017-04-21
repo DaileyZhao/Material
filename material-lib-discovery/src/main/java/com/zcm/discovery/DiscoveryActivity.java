@@ -1,5 +1,6 @@
 package com.zcm.discovery;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -18,12 +19,14 @@ import butterknife.BindView;
 public class DiscoveryActivity extends BaseActivity {
     @BindView(R2.id.tv_distest)
     TextView tv_distest;
+    Intent intent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_discovery);
+        intent=getIntent();
         tv_distest.setTextSize(50);
-        tv_distest.setText("DISCOVERY!!!");
+        tv_distest.setText(intent.getStringExtra("name")+intent.getIntExtra("age",0));
         tv_distest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

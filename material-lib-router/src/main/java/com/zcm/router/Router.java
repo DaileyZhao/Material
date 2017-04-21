@@ -16,7 +16,8 @@ import timber.log.Timber;
 /**
  * Created by kris on 16/3/17.
  * shell to the user
- * 在路由框架中，url应该包含两点功能，一是唯一确定一条路由，二是提供一些参数。我们可以以一个路由的例子来讲解ActivityRouter的路由规则。本规则参考了REST。
+ * http://www.ctolib.com/AndRouter.html#articleHeader1
+ 在路由框架中，url应该包含两点功能，一是唯一确定一条路由，二是提供一些参数。我们可以以一个路由的例子来讲解ActivityRouter的路由规则。本规则参考了REST。
  例：activity://main/:i{key1}/path1/:f{key2}
 
  scheme为activity代表该url可以被ActivityRouter打开。

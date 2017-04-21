@@ -1,8 +1,13 @@
 package com.zcm.thunder.test;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +21,7 @@ import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
 import com.zcm.thunder.recyclerview.BaseAdapterAct;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,6 +34,7 @@ import butterknife.BindView;
 public class TestActivity extends THBaseActivity {
 
     private HomeWatcherReceiver receiver=null;
+    private static final int IMAGE = 1;
     @BindView(R.id.function_list)
     RecyclerView function_list;
     private List<TestItem> item_names;
@@ -66,6 +73,37 @@ public class TestActivity extends THBaseActivity {
         homeFilter.addAction(Intent.ACTION_SCREEN_OFF);
         homeFilter.addAction(Intent.ACTION_SCREEN_ON);
         registerReceiver(receiver,homeFilter);
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        //获取图片路径
+        if (requestCode == IMAGE && resultCode == Activity.RESULT_OK && data != null) {
+            Uri selectedImage = data.getData();
+            String[] filePathColumns = {MediaStore.Images.Media.DATA};
+            Cursor c = getContentResolver().query(selectedImage, filePathColumns, null, null, null);
+            c.moveToFirst();
+            int columnIndex = c.getColumnIndex(filePathColumns[0]);
+            String imagePath = c.getString(columnIndex);
+            Intent intent1 = new Intent("com.android.camera.action.CROP");
+            intent1.setDataAndType(Uri.fromFile(new File(imagePath)), "image/*");
+            intent1.putExtra("crop", "true");
+           // intent1.putExtra(MediaStore.EXTRA_OUTPUT, Uri.fromFile(tempFile));//
+            intent1.putExtra("aspectX", 1);
+            intent1.putExtra("aspectY", 1);
+            intent1.putExtra("outputFormat", Bitmap.CompressFormat.JPEG);
+            intent1.putExtra("outputX", 720);
+            intent1.putExtra("outputY", 720);
+            intent1.putExtra("scale", true);
+            intent1.putExtra("scaleUpIfNeeded", true);
+            intent1.putExtra("return-data", false);
+            startActivityForResult(intent1, 0x222);
+            showToast(imagePath);
+            c.close();
+        }
+        if (requestCode==0x222&resultCode==Activity.RESULT_OK&data!=null){
+            showToast(data.getData().toString());
+        }
     }
     public void addItem(){
         item_names=new ArrayList<>();
@@ -116,8 +154,17 @@ public class TestActivity extends THBaseActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                Router.open("http://www.baidu.com");
-                //Router.open(TestActivity.this,"activity://bbs/");
+                Router.open(TestActivity.this,"http://www.ctolib.com/AndRouter.html#articleHeader1");
+                //Router.open(TestActivity.this,"activity://discovery/%s/%d/birthday","hehehe",23);
+            }
+        });
+        item_names.add(new TestItem("系统相册"){
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(intent, IMAGE);
             }
         });
     }

@@ -34,6 +34,7 @@ public class BrowserRouter extends BaseRouter {
         if(doOnInterceptor(context, route.getUrl())){
             return true;
         }
+        //7.0可以这样调用，使用APP的context，4.0会崩溃
         Uri uri = Uri.parse(route.getUrl());
         Intent intent = new Intent("com.zcm.action.browser", uri);
         //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

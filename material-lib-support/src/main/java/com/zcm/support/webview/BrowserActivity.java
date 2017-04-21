@@ -1,5 +1,6 @@
 package com.zcm.support.webview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.KeyEvent;
@@ -21,13 +22,15 @@ public class BrowserActivity extends BaseActivity {
     @BindView(R2.id.layout_browser)
     BrowserLayout mBrowserLayout;
     private String url="https://www.baidu.com";
+    private Intent intent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_browser);
-        if (getIntent()!=null){
-            if (getIntent().getData() != null) {
-                url = getIntent().getData().toString();
+        intent=getIntent();
+        if (intent!=null){
+            if (intent.getData() != null) {
+                url = intent.getData().toString();
             }
         }
         //mBrowserLayout= (BrowserLayout) findViewById(R.id.layout_browser);
