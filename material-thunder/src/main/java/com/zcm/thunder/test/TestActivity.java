@@ -13,7 +13,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.zcm.router.Router;
 import com.zcm.support.webview.BrowserActivity;
 import com.zcm.support.widget.ActionSheetDialog;
 import com.zcm.thunder.HomeWatcherReceiver;
@@ -101,8 +100,11 @@ public class TestActivity extends THBaseActivity {
             showToast(imagePath);
             c.close();
         }
-        if (requestCode==0x222&resultCode==Activity.RESULT_OK&data!=null){
+        if (requestCode==0x222&&resultCode==Activity.RESULT_OK&&data!=null){
             showToast(data.getData().toString());
+        }
+        if (requestCode==0x111&&resultCode==Activity.RESULT_OK){
+            showToast(data.getStringExtra("change01"));
         }
     }
     public void addItem(){
@@ -154,8 +156,9 @@ public class TestActivity extends THBaseActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                Router.open(TestActivity.this,"http://www.ctolib.com/AndRouter.html#articleHeader1");
-                //Router.open(TestActivity.this,"activity://discovery/%s/%d/birthday","hehehe",23);
+                //openActivity("http://www.ctolib.com/AndRouter.html#articleHeader1");
+                //Router.open(TestActivity.this,"http://www.ctolib.com/AndRouter.html#articleHeader1");
+                openActivityForResult(0x111,"activity://discovery/%s/%d/birthday","hehehe",23);
             }
         });
         item_names.add(new TestItem("系统相册"){

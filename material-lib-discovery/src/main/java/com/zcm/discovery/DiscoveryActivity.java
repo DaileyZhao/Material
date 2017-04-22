@@ -1,5 +1,6 @@
 package com.zcm.discovery;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,6 +32,10 @@ public class DiscoveryActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 Toast.makeText(DiscoveryActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
+                Intent mIntent = new Intent();
+                mIntent.putExtra("change01", "1000");
+                setResult(Activity.RESULT_OK,mIntent);
+                finish();
             }
         });
     }

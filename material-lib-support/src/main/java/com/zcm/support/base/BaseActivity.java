@@ -12,6 +12,8 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.zcm.router.Router;
+import com.zcm.router.route.ActivityRoute;
 import com.zcm.support.R;
 import com.zcm.support.basetitle.BaseTitleView;
 import com.zcm.support.mvp.BasePresenter;
@@ -222,5 +224,13 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
 
     protected void showLongToast(String content) {
         Toast.makeText(this, content, Toast.LENGTH_LONG).show();
+    }
+    protected void openActivity(String url,Object ... params){
+        Router.open(this,url,params);
+    }
+    protected void openActivityForResult(int requestCode,String url,Object ... params){
+        ActivityRoute activityRoute = (ActivityRoute) Router.getRoute(url,params);
+        activityRoute.withOpenMethodStartForResult(this, requestCode)
+                .open();
     }
 }
