@@ -59,3 +59,5 @@
 -keep class com.chad.library.adapter.** {
    *;
 }
+# OkHttp
+-dontwarn okio.**
