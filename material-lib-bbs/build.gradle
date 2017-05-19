@@ -6,14 +6,15 @@ if (isModule.toBoolean()) {
 }
 apply plugin: 'android-apt'
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
-    buildToolsVersion rootProject.ext.buildToolsVersion
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     defaultConfig {
-        minSdkVersion rootProject.ext.minSdkVersion
-        targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode rootProject.ext.versionCode
-        versionName rootProject.ext.versionName
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
 
     }
     buildTypes {
@@ -40,6 +41,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile project(':material-lib-support')
-    compile "com.jakewharton:butterknife:$rootProject.butterknifeVersion"
-    apt "com.jakewharton:butterknife-compiler:$rootProject.butterknifeVersion"
+    apt rootProject.ext.dependencies["butterknife-compiler"]
 }

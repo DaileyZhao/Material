@@ -12,13 +12,13 @@ import de.greenrobot.event.EventBus;
 
 public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
     protected final String TAG=this.getClass().getSimpleName();
-    private WeakReference<V> viewRef;
+    protected V view;
     public BasePresenter(V view){
-        viewRef=new WeakReference<V>(view);
+        this.view=view;
     }
     @Nullable
     public V getView() {
-        return viewRef == null ? null : viewRef.get();
+        return view;
     }
     /**
      * 是否使用eventBus,默认为使用(false)，
@@ -36,9 +36,8 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
 
     @Override
     public void onDestroy() {
-        if (viewRef!=null){
-            viewRef.clear();
-            viewRef=null;
+        if (view!=null){
+           view=null;
         }
         if (useEventBus())//如果要使用eventbus请将此方法返回true
             EventBus.getDefault().unregister(this);//解除注册eventbus

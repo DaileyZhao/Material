@@ -1,5 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+apply from:"config.gradle"
 buildscript {
     repositories {
         jcenter()
@@ -23,28 +23,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-//Define buildVersion
-ext{
-    buildToolsVersion=localBuildToolsVersion
-    compileSdkVersion=23
-    minSdkVersion=14
-    targetSdkVersion=23
-    versionCode=1
-    versionName="1.0"
-
-    supportLibraryVersion="23.4.0"
-    retrofitVersion="2.1.0"
-    glideVersion="3.7.0"
-    eventbusVersion="2.4.0"
-    okhttpVersion="3.4.1"
-    rxjavaVersion="1.1.10"
-    rxandroidVersion="1.2.1"
-    multidexVersion="1.0.1"
-    butterknifeVersion="8.4.0"
-    glidePaletteVersion="2.0.1"
-    glideTransformationsVersion="2.0.2"
-    baseAdapterHelperVersion="2.9.9"
-    commonscollections4Version="4.0"
-    timberVersion="3.1.0"
 }
