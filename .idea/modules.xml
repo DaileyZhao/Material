@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/Material.iml" filepath="$PROJECT_DIR$/Material.iml" />
       <module fileurl="file://$PROJECT_DIR$/material-lib-bbs/material-lib-bbs.iml" filepath="$PROJECT_DIR$/material-lib-bbs/material-lib-bbs.iml" />
       <module fileurl="file://$PROJECT_DIR$/material-lib-discovery/material-lib-discovery.iml" filepath="$PROJECT_DIR$/material-lib-discovery/material-lib-discovery.iml" />
-      <module fileurl="file://$PROJECT_DIR$/material-lib-router/material-lib-router.iml" filepath="$PROJECT_DIR$/material-lib-router/material-lib-router.iml" />
       <module fileurl="file://$PROJECT_DIR$/material-lib-support/material-lib-support.iml" filepath="$PROJECT_DIR$/material-lib-support/material-lib-support.iml" />
       <module fileurl="file://$PROJECT_DIR$/material-thunder/material-thunder.iml" filepath="$PROJECT_DIR$/material-thunder/material-thunder.iml" />
     </modules>

@@ -9,7 +9,7 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.zcm.router.BuildConfig;
+
 import com.zcm.router.exception.InvalidRoutePathException;
 import com.zcm.router.exception.InvalidValueTypeException;
 import com.zcm.router.exception.RouteNotFoundException;
@@ -17,6 +17,7 @@ import com.zcm.router.route.ActivityRoute;
 import com.zcm.router.route.IRoute;
 import com.zcm.router.tools.ActivityRouteRuleBuilder;
 import com.zcm.router.utils.UrlUtils;
+import com.zcm.support.BuildConfig;
 
 import org.apache.commons.collections4.queue.CircularFifoQueue;
 

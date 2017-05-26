@@ -25,7 +25,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':material-lib-router')
     compile (rootProject.ext.dependencies["support-v4"]){
         exclude module: 'support-annotations'
     }
@@ -77,6 +76,8 @@ dependencies {
         exclude module: 'support-annotations'
     }
     apt rootProject.ext.dependencies["butterknife-compiler"]
+    compile "org.apache.commons:commons-collections4:4.1"
+    compile rootProject.ext.dependencies["timber"]
     //
     //compile "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.16"
 }

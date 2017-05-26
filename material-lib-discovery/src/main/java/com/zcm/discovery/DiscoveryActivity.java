@@ -35,6 +35,7 @@ public class DiscoveryActivity extends BaseActivity {
                 Intent mIntent = new Intent();
                 mIntent.putExtra("change01", "1000");
                 setResult(Activity.RESULT_OK,mIntent);
+                openActivity("activity://bbs/");
                 finish();
             }
         });
