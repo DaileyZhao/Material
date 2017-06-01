@@ -14,9 +14,9 @@ public class LaunchPresenter extends THBasePresenter<LaunchView> {
         super(view);
     }
     public void getPic(){
-        RxService.createApi(ThunderApi.class).meinv(1)
+        rxmanager.add(RxService.createApi(ThunderApi.class).meinv(1)
                 .compose(RxUtil.rxSchedulerHelper())
         .subscribe(data->getView().getPicBean(data),
-                e->getView().showError("数据加载失败ヽ(≧Д≦)ノ"));
+                e->getView().showError("数据加载失败ヽ(≧Д≦)ノ")));
     }
 }

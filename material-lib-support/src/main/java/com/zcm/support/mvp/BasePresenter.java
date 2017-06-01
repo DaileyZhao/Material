@@ -13,8 +13,10 @@ import de.greenrobot.event.EventBus;
 public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
     protected final String TAG=this.getClass().getSimpleName();
     protected V view;
+    protected Rxmanager rxmanager;
     public BasePresenter(V view){
         this.view=view;
+        rxmanager=new Rxmanager();
     }
     @Nullable
     public V getView() {
@@ -41,5 +43,6 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
         }
         if (useEventBus())//如果要使用eventbus请将此方法返回true
             EventBus.getDefault().unregister(this);//解除注册eventbus
+        rxmanager.clear();
     }
 }
