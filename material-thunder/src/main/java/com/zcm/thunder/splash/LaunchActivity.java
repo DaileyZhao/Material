@@ -4,6 +4,7 @@ import android.animation.Animator;
 import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -26,37 +27,13 @@ public class LaunchActivity extends THBaseActivity<LaunchView,LaunchPresenter> i
     ImageView img_splash;
     @BindView(R.id.tv_splash)
     TextView tv_splash;
-    private ObjectAnimator animator;
+    Handler handler;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
         bt_title.setVisibility(View.GONE);
-        animator=ObjectAnimator.ofFloat(img_splash,"alpha",0.5f,1f);
-        animator.setDuration(5000);
-        animator.start();
-        animator.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                startActivity(new Intent(LaunchActivity.this, TestActivity.class));
-                finish();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
-        });
+        handler=new Handler();
         mPresenter.getPic();
     }
 
@@ -68,12 +45,17 @@ public class LaunchActivity extends THBaseActivity<LaunchView,LaunchPresenter> i
     @Override
     public void getPicBean(PicBean bean) {
         Log.d(TAG, "getPicBean: "+bean.getNewslist().get(0).getPicUrl());
-        Glide.with(this).load(bean.getNewslist().get(0).getPicUrl()).thumbnail(0.5f).into(img_splash) ;
+        Glide.with(this).load(bean.getNewslist().get(0).getPicUrl()).thumbnail(0.7f).into(img_splash) ;
         tv_splash.setText(bean.getNewslist().get(0).getTitle());
+        gotoMain();
     }
 
     @Override
     public void showError(String errormsg) {
         showToast(errormsg);
+    }
+    private void gotoMain(){
+        handler.postDelayed(() -> {startActivity(new Intent(LaunchActivity.this,TestActivity.class));
+            finish();},5000);
     }
 }

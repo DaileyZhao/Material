@@ -133,10 +133,11 @@ public class TestActivity extends THBaseActivity {
                                 }).show();
             }
         });
-        item_names.add(new TestItem("BaseAdapterHelper用法"){
+        item_names.add(new TestItem("service"){
             @Override
             public void onClick(View v) {
                 super.onClick(v);
+                startService(new Intent(TestActivity.this,TestService.class));
             }
         });
         item_names.add(new TestItem("intent测试"){

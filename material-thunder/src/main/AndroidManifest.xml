@@ -15,7 +15,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".test.TestActivity"/>
-        <activity android:name=".recyclerview.BaseAdapterAct" />
+        <service android:name=".test.TestService"/>
     </application>
 
 </manifest>
