@@ -1,9 +1,5 @@
 package com.zcm.support.mvp;
 
-import android.support.annotation.Nullable;
-
-import java.lang.ref.WeakReference;
-
 import de.greenrobot.event.EventBus;
 
 /**
@@ -18,7 +14,7 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
         this.view=view;
         rxmanager=new Rxmanager();
     }
-    @Nullable
+
     public V getView() {
         return view;
     }

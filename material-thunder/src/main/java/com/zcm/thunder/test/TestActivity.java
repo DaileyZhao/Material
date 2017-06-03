@@ -18,6 +18,7 @@ import com.zcm.support.widget.ActionSheetDialog;
 import com.zcm.thunder.HomeWatcherReceiver;
 import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
+import com.zcm.thunder.service.BindActivity;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -137,7 +138,8 @@ public class TestActivity extends THBaseActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                startService(new Intent(TestActivity.this,TestService.class));
+                //startService(new Intent(TestActivity.this,TestService.class));
+                startActivity(new Intent(TestActivity.this, BindActivity.class));
             }
         });
         item_names.add(new TestItem("intent测试"){
