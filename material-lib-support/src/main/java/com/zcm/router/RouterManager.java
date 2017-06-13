@@ -2,6 +2,7 @@ package com.zcm.router;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.util.Log;
 
 import com.zcm.router.interceptor.Interceptor;
 import com.zcm.router.route.IRoute;
@@ -15,7 +16,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import timber.log.Timber;
 
 /**
  * Created by kris on 16/3/17.
@@ -24,6 +24,7 @@ import timber.log.Timber;
  */
 public class RouterManager {
 
+    private static final String TAG=RouterManager.class.getSimpleName();
     private static final RouterManager singleton = new RouterManager();
 
     //注意这是个list是有顺序的，所以排在前面的优先级会比较高
@@ -47,9 +48,7 @@ public class RouterManager {
             mRouters.removeAll(duplicateRouters);
             mRouters.add(router);
         } else {
-            Timber.e(new NullPointerException("The Router" +
-                    "is null" +
-                    ""), "");
+            Log.e(TAG, "router is null!!!");
         }
     }
 

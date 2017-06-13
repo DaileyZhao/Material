@@ -9,7 +9,6 @@ import android.support.v4.app.Fragment;
 import android.text.TextUtils;
 import android.util.Log;
 
-
 import com.zcm.router.exception.InvalidRoutePathException;
 import com.zcm.router.exception.InvalidValueTypeException;
 import com.zcm.router.exception.RouteNotFoundException;
@@ -19,16 +18,13 @@ import com.zcm.router.tools.ActivityRouteRuleBuilder;
 import com.zcm.router.utils.UrlUtils;
 import com.zcm.support.BuildConfig;
 
-import org.apache.commons.collections4.queue.CircularFifoQueue;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;
-
-import timber.log.Timber;
+import java.util.concurrent.LinkedBlockingDeque;
 
 import static com.zcm.router.utils.UrlUtils.getHost;
 import static com.zcm.router.utils.UrlUtils.getPathSegments;
@@ -41,7 +37,7 @@ public class ActivityRouter extends BaseRouter {
     private static final String TAG = "Router";
     private static List<String> MATCH_SCHEMES = new ArrayList<>();
     private static final String DEFAULT_SCHEME = "activity";
-    private static final int HISTORY_CACHE_SIZE = 20;
+    private static final int HISTORY_CACHE_SIZE = 200;
 
     private static ActivityRouter mActivityRouter = new ActivityRouter();   //Activity
 
@@ -62,7 +58,7 @@ public class ActivityRouter extends BaseRouter {
     }
 
     private Map<String, Class<? extends Activity>> mRouteTable = new HashMap<>();
-    private CircularFifoQueue<HistoryItem> mHistoryCaches = new CircularFifoQueue<>(HISTORY_CACHE_SIZE);
+    private Queue<HistoryItem> mHistoryCaches = new LinkedBlockingDeque<>(HISTORY_CACHE_SIZE);
 
 
     public static ActivityRouter getInstance(){
@@ -86,7 +82,7 @@ public class ActivityRouter extends BaseRouter {
         for (String pathRule : mRouteTable.keySet()) {
             boolean isValid = ActivityRouteRuleBuilder.isActivityRuleValid(pathRule);
             if (!isValid) {
-                Timber.e(new InvalidRoutePathException(pathRule), "");
+                Log.e(TAG,new InvalidRoutePathException(pathRule).getMessage());
                 mRouteTable.remove(pathRule);
             }
         }
@@ -187,13 +183,13 @@ public class ActivityRouter extends BaseRouter {
                         ret = true;
                         break;
                     default:
-                        Timber.e("Error Open Type");
+                        Log.e(TAG,"Error Open Type");
                         ret = false;
                         break;
 
                 }
             } catch (Exception e) {
-                Timber.e(e, "Url route not specified: %s", route.getUrl());
+                Log.e(TAG,"Url route not specified:"+route.getUrl());
                 ret = false;
             }
         }
@@ -218,7 +214,7 @@ public class ActivityRouter extends BaseRouter {
                 open(aRoute, context);
                 return true;
             } catch (Exception e){
-                Timber.e(e, "Url route not specified: %s", route.getUrl());
+                Log.e(TAG, "Url route not specified: "+ route.getUrl());
             }
         }
         return false;

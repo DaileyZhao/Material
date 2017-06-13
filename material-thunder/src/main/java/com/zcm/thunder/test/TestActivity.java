@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.zcm.support.webview.BrowserActivity;
@@ -113,7 +114,14 @@ public class TestActivity extends THBaseActivity {
             @Override
             public void onClick(View v) {
                 super.onClick(v);
-                startActivity(new Intent(TestActivity.this, BrowserActivity.class));
+                new Thread(){
+                    @Override
+                    public void run() {
+                        super.run();
+                        Log.d(TAG, "run: "+Thread.currentThread().getName());
+                        startActivity(new Intent(TestActivity.this, BrowserActivity.class));
+                    }
+                }.start();
             }
         });
         item_names.add(new TestItem("showSheetDialog"){

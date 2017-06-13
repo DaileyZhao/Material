@@ -1,13 +1,12 @@
 package com.zcm.router.utils;
 
 import android.net.Uri;
+import android.util.Log;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-
-import timber.log.Timber;
 
 
 /**
@@ -57,7 +56,7 @@ public class UrlUtils {
                 parameters.put(key, uri.getQueryParameter(key));
             }
         } catch (Exception e){
-            Timber.e(e, "");
+            Log.e(TAG, "getParameters: "+e.getMessage());
         }
         return parameters;
     }
@@ -68,7 +67,7 @@ public class UrlUtils {
             Uri uri = Uri.parse(url);
             return uri.buildUpon().appendQueryParameter(key, value).build().toString();
         } catch (Exception e){
-            Timber.e(e, "");
+            Log.e(TAG, "addQueryParameters: "+e.getMessage() );
         }
         return url;
     }
@@ -84,7 +83,7 @@ public class UrlUtils {
             }
             return builder.toString();
         } catch (Exception e){
-            Timber.e(e, "");
+            Log.e(TAG, "addQueryParameters: "+e.getMessage());
         }
         return url;
     }

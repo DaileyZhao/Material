@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import timber.log.Timber;
-
 /**
  * 该类用来创建路由规则，当然你也可以自己手动创建
  * Created by kris on 16/3/10.
@@ -99,11 +97,11 @@ public class ActivityRouteRuleBuilder extends BaseRouteRuleBuilder {
             if(seg.startsWith(":")){
                 Matcher matcher = p.matcher(seg);
                 if(!matcher.matches()){
-                    Timber.w("The key format not match : %s" , seg);
+                    Log.w( TAG,"The key format not match :"+ seg );
                     return false;
                 }
                 if(checkedSegs.contains(seg)){
-                    Timber.w("The key is duplicated : %s" , seg);
+                    Log.w(TAG,"The key is duplicated : " + seg);
                     return false;
                 }
                 checkedSegs.add(seg);

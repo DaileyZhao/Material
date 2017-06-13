@@ -11,8 +11,6 @@ import com.zcm.router.router.IRouter;
 import java.util.Locale;
 import java.util.Queue;
 
-import timber.log.Timber;
-
 /**
  * Created by kris on 16/3/17.
  * shell to the user
@@ -77,7 +75,7 @@ public class Router {
      */
     public static void setDebugMode(boolean debug){
         if(debug) {
-            Timber.plant(new Timber.DebugTree());
+           // Timber.plant(new Timber.DebugTree());
         }
     }
 

@@ -1,11 +1,11 @@
 package com.zcm.router.tools;
 
+import android.util.Log;
+
 import com.zcm.router.utils.UrlUtils;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import timber.log.Timber;
 
 /**
  * 根据路径规则和参数生成路由路径，将会替换路由中的参数定义，替换为具体的值
@@ -68,7 +68,7 @@ public class ActivityRouteUrlBuilder {
     public String build(){
         Matcher matcher = Pattern.compile(":[i, f, l, d, s, c]?\\{[a-zA-Z0-9]+?\\}").matcher(mPath);
         if(matcher.find()){
-            Timber.w("Not all the key settled");
+            Log.w(TAG,"Not all the key settled");
         }
         return mPath;
     }
