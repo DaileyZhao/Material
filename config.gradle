@@ -15,44 +15,60 @@ ext{
             okhttpSdkVersion        : "3.4.1",
             glideSdkVersion         : "3.7.0",
             picassoSdkVersion       : "2.5.2",
-            imageloaderVersion      : "1.9.5",
             frescoVersion           : "1.3.0",
             rxjava                  : "1.2.10",
             rxandroid               : "1.2.1",
     ]
     dependencies = [
-            //support
+            //https://developer.android.google.cn/topic/libraries/support-library/index.html
+            //http://b.codekk.com/detail/Trinea/Android 最新 Support V4 包大拆分有用吗？
+            //support-v7
             "appcompat-v7"             : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+            "cardview-v7"              : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
+            "recyclerview-v7"          : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+            "gridlayout-v7"            : "com.android.support:gridlayout-v7:${version["androidSupportSdkVersion"]}",
+            "mediarouter-v7"           : "com.android.support:mediarouter-v7:${version["androidSupportSdkVersion"]}",
+            "palette-v7"               : "com.android.support:palette-v7:${version["androidSupportSdkVersion"]}",
+            "preference-v7"            : "com.android.support:preference-v7:${version["androidSupportSdkVersion"]}",
+            "support-vector-drawable"  : "com.android.support:support-vector-drawable:${version["androidSupportSdkVersion"]}",
+            "animated-vector-drawable" : "com.android.support:animated-vector-drawable:${version["androidSupportSdkVersion"]}",
+
+            //设计支持库
             "design"                   : "com.android.support:design:${version["androidSupportSdkVersion"]}",
+            "percent"                  : "com.android.support:percent:${version["androidSupportSdkVersion"]}",
+
+            //support-v4
             "support-v4"               : "com.android.support:support-v4:${version["androidSupportSdkVersion"]}",
             "support-compat"           : "com.android.support:support-compat:${version["androidSupportSdkVersion"]}",
             "support-core-utils"       : "com.android.support:support-core-utils:${version["androidSupportSdkVersion"]}",
             "support-core-ui"          : "com.android.support:support-core-ui:${version["androidSupportSdkVersion"]}",
             "support-media-compat"     : "com.android.support:support-media-compat:${version["androidSupportSdkVersion"]}",
             "support-fragment"         : "com.android.support:support-fragment:${version["androidSupportSdkVersion"]}",
-            "cardview-v7"              : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
-            "annotations"              : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
-            "recyclerview-v7"          : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+            "support-annotations"      : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
 
+            // Dalvik Executable (DEX)
+            "multidex"                 : "com.android.support:multidex:1.0.1",
+            "multidex-instrumentation" : "com.android.support:multidex-instrumentation:1.0.1",
             //network
             "retrofit"                 : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
             "retrofit-converter-gson"  : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
             "retrofit-adapter-rxjava"  : "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
             "retrofit-adapter-rxjava2" : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
-            "okhttp3"                  : "com.squareup.okhttp3:okhttp:${version["okhttpSdkVersion"]}",
+            "okhttp"                   : "com.squareup.okhttp3:okhttp:${version["okhttpSdkVersion"]}",
             "okhttp-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${version["okhttpSdkVersion"]}",
+            //image
             "glide-okhttp"             : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
             "glide"                    : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",
             "picasso"                  : "com.squareup.picasso:picasso:${version["picassoSdkVersion"]}",
-            "imageloader"              : "com.nostra13.universalimageloader:universal-image-loader:${version["imageloaderVersion"]}",
+            "imageloader"              : "com.nostra13.universalimageloader:universal-image-loader:1.9.5",
             "fresco"                   : "com.facebook.fresco:fresco:${version["frescoVersion"]}",
             "glide-transforms"         : "jp.wasabeef:glide-transformations:2.0.2",
 
             //view
             "butterknife"              : "com.jakewharton:butterknife:${version["butterknifeSdkVersion"]}",
             "butterknife-compiler"     : "com.jakewharton:butterknife-compiler:${version["butterknifeSdkVersion"]}",
-            "pickerview"               : "com.bigkoo:pickerview:2.0.8",
-            "photoview"                : "com.github.chrisbanes.photoview:library:1.2.3",
+            "pickerview"               : "com.bigkoo:pickerview:2.1.0",
+            "photoview"                : "com.github.chrisbanes:PhotoView:1.2.5",
             "numberprogressbar"        : "com.daimajia.numberprogressbar:library:1.2@aar",
             "nineoldandroids"          : "com.nineoldandroids:library:2.4.0",
 
@@ -68,7 +84,6 @@ ext{
             "eventbus"                 : "de.greenrobot:eventbus:2.4.0",
             "otto"                     : "com.squareup:otto:1.3.8",
             "gson"                     : "com.google.code.gson:gson:2.8.0",
-            "multidex"                 : "com.android.support:multidex:1.0.1",
             "javax.annotation"         : "javax.annotation:jsr250-api:1.0",
 
             //test
