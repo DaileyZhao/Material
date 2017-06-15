@@ -94,6 +94,7 @@ public class BannerView<T> extends RelativeLayout {
         mIndicatorAlign = typedArray.getInt(R.styleable.BannerView_indicatorAlign,1);
         mIndicatorPaddingLeft = typedArray.getDimensionPixelSize(R.styleable.BannerView_indicatorPaddingLeft,0);
         mIndicatorPaddingRight = typedArray.getDimensionPixelSize(R.styleable.BannerView_indicatorPaddingRight,0);
+        typedArray.recycle();
     }
 
 
