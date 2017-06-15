@@ -53,7 +53,7 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
         }
         mHelper.onActivityCreate();
         if (mPresenter == null) {
-            mPresenter = getPresenter();
+            mPresenter = createPresenter();
         }
     }
 
@@ -92,7 +92,7 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         if (mPresenter == null) {
-            mPresenter = getPresenter();
+            mPresenter = createPresenter();
         }
     }
 
@@ -175,7 +175,7 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
      *
      * @return
      */
-    protected abstract P getPresenter();
+    protected abstract P createPresenter();
 
     @Override
     public void showLoading() {

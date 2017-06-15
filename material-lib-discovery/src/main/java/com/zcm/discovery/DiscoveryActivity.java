@@ -42,7 +42,7 @@ public class DiscoveryActivity extends BaseActivity {
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter createPresenter() {
         return null;
     }
 }

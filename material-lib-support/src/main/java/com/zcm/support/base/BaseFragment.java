@@ -30,7 +30,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (mPresenter==null){
-            mPresenter=getPresenter();
+            mPresenter= createPresenter();
         }
     }
 
@@ -52,7 +52,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
         if (mPresenter==null){
-            mPresenter=getPresenter();
+            mPresenter= createPresenter();
         }
     }
 
@@ -114,7 +114,7 @@ public abstract class BaseFragment<P extends IPresenter> extends Fragment implem
      * 获取view对应的Presenter
      * @return
      */
-    protected abstract P getPresenter();
+    protected abstract P createPresenter();
 
     public void showLoading(){}
 

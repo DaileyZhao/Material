@@ -40,7 +40,7 @@ public class BrowserActivity extends BaseActivity {
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter createPresenter() {
         return null;
     }
     private void initBrowser(){

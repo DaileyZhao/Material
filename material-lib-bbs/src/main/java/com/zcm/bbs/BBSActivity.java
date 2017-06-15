@@ -27,7 +27,7 @@ public class BBSActivity extends BaseActivity {
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter createPresenter() {
         return null;
     }
 

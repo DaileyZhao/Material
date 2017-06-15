@@ -7,6 +7,8 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,6 +21,7 @@ import com.zcm.support.widget.ActionSheetDialog;
 import com.zcm.thunder.HomeWatcherReceiver;
 import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
+import com.zcm.thunder.banner.BannerTestAct;
 import com.zcm.thunder.service.BindActivity;
 
 import java.io.File;
@@ -58,7 +61,7 @@ public class TestActivity extends THBaseActivity {
     }
 
     @Override
-    protected TestPresenter getPresenter() {
+    protected TestPresenter createPresenter() {
         return new TestPresenter(this);
     }
     private void setView(){
@@ -148,6 +151,17 @@ public class TestActivity extends THBaseActivity {
                 super.onClick(v);
                 //startService(new Intent(TestActivity.this,TestService.class));
                 startActivity(new Intent(TestActivity.this, BindActivity.class));
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Looper.prepare();
+                        Log.e(TAG, "run: start");
+                        Handler handler=new Handler();
+                        Looper.loop();
+                        Looper.myLooper().quitSafely();
+                        Log.e(TAG, "run: stop");
+                    }
+                }).start();
             }
         });
         item_names.add(new TestItem("intent测试"){
@@ -177,6 +191,13 @@ public class TestActivity extends THBaseActivity {
                 Intent intent = new Intent(Intent.ACTION_PICK,
                         android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(intent, IMAGE);
+            }
+        });
+        item_names.add(new TestItem("banner测试"){
+            @Override
+            public void onClick(View v) {
+                super.onClick(v);
+                startActivity(new Intent(TestActivity.this, BannerTestAct.class));
             }
         });
     }

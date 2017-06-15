@@ -22,4 +22,15 @@
     </declare-styleable>
 
     <attr name="SwipeBackLayoutStyle" format="reference"/>
+    <declare-styleable name="BannerView">
+        <attr name="open_mz_mode" format="boolean"/>
+        <attr name="canLoop" format="boolean"/>
+        <attr name="indicatorPaddingLeft" format="dimension"/>
+        <attr name="indicatorPaddingRight" format="dimension"/>
+        <attr name="indicatorAlign">
+            <enum name="left" value="0"/>
+            <enum name="center" value="1"/>
+            <enum name="right" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

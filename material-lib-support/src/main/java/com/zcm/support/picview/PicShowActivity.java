@@ -80,7 +80,7 @@ public class PicShowActivity extends BaseActivity {
     }
 
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter createPresenter() {
         return null;
     }
 }

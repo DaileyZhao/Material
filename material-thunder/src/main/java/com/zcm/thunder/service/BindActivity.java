@@ -38,7 +38,7 @@ public class BindActivity extends THBaseActivity {
         }
     };
     @Override
-    protected BasePresenter getPresenter() {
+    protected BasePresenter createPresenter() {
         return null;
     }
 

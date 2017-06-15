@@ -38,7 +38,7 @@ public class LaunchActivity extends THBaseActivity<LaunchView,LaunchPresenter> i
     }
 
     @Override
-    protected LaunchPresenter getPresenter() {
+    protected LaunchPresenter createPresenter() {
         return new LaunchPresenter(this);
     }
 
