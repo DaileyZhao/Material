@@ -156,6 +156,7 @@ public class BannerView<T> extends RelativeLayout {
     }
 
 
+    //handler的精髓用法，赞！！！！
     private final Runnable mLoopRunnable = new Runnable() {
         @Override
         public void run() {

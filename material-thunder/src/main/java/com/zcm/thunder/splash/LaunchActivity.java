@@ -1,7 +1,5 @@
 package com.zcm.thunder.splash;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.zcm.support.imageselect.ImageLoaderManager;
+import com.zcm.support.imageselect.ImageLoaderOptions;
 import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
 import com.zcm.thunder.test.TestActivity;
@@ -45,7 +44,13 @@ public class LaunchActivity extends THBaseActivity<LaunchView,LaunchPresenter> i
     @Override
     public void getPicBean(PicBean bean) {
         Log.d(TAG, "getPicBean: "+bean.getNewslist().get(0).getPicUrl());
-        Glide.with(this).load(bean.getNewslist().get(0).getPicUrl()).thumbnail(0.7f).into(img_splash) ;
+        ImageLoaderOptions options=new ImageLoaderOptions.Builder()
+                .setCrossFade(true)
+                .setSkipMemoryCache(false)
+                .setPlaceHolder(com.zcm.support.R.drawable.error_picture)
+                .setErrorDrawable(com.zcm.support.R.drawable.error_picture)
+                .build();
+        ImageLoaderManager.getSingleton().showImage(img_splash,bean.getNewslist().get(0).getPicUrl(),options);
         tv_splash.setText(bean.getNewslist().get(0).getTitle());
         gotoMain();
     }

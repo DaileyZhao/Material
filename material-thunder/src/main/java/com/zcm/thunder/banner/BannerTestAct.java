@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.zcm.support.banner.BannerView;
 import com.zcm.support.banner.holder.PagerHolderCreator;
 import com.zcm.support.banner.holder.PagerViewHolder;
+import com.zcm.support.imageselect.ImageLoaderManager;
+import com.zcm.support.imageselect.ImageLoaderOptions;
 import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
 
@@ -87,7 +88,13 @@ public class BannerTestAct extends THBaseActivity<IBannerView,BannerPresenter> i
         public void onBind(Context context, int position, String data) {
             // 数据绑定
             // 自己绑定数据，灵活度很大
-            Glide.with(context).load(data).into(mImageView);
+            ImageLoaderOptions options=new ImageLoaderOptions.Builder()
+                    .setCrossFade(true)
+                    .setSkipMemoryCache(false)
+                    .setPlaceHolder(com.zcm.support.R.drawable.error_picture)
+                    .setErrorDrawable(com.zcm.support.R.drawable.error_picture)
+                    .build();
+            ImageLoaderManager.getSingleton().showImage(mImageView,data,options);
         }
     }
 }
