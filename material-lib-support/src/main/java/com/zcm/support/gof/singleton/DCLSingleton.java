@@ -1,4 +1,4 @@
-package com.zcm.support.gof;
+package com.zcm.support.gof.singleton;
 
 /**
  * Created by zcm on 17-6-1.
