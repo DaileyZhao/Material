@@ -4,12 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.media.MediaMetadataCompat;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zcm.support.base.BaseActivity;
 import com.zcm.support.mvp.BasePresenter;
+import com.zcm.support.widget.rule.RulerWheel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 
@@ -20,6 +25,8 @@ import butterknife.BindView;
 public class DiscoveryActivity extends BaseActivity {
     @BindView(R2.id.tv_distest)
     TextView tv_distest;
+    @BindView(R2.id.rule_wheel)
+    RulerWheel rule_wheel;
     Intent intent;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +46,12 @@ public class DiscoveryActivity extends BaseActivity {
                 finish();
             }
         });
+        List<String> heightList=new ArrayList<>();
+        for (int i=0;i<201;i++){
+            heightList.add(i+"");
+        }
+        rule_wheel.setData(heightList);
+        rule_wheel.setSelectedValue(30+"");
     }
 
     @Override
