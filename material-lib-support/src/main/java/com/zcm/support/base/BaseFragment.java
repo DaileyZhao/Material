@@ -7,9 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
+import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IBaseView;
-import com.zcm.support.mvp.IPresenter;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -20,7 +19,7 @@ import de.greenrobot.event.EventBus;
  * 与BaseActivity结构相同的BaseFragment，功能陆续完善
  */
 
-public abstract class BaseFragment<P extends IPresenter> extends Fragment implements IBaseView {
+public abstract class BaseFragment<V extends IBaseView,P extends BasePresenter<V>> extends Fragment implements IBaseView {
     protected final String TAG=this.getClass().getSimpleName();
     protected P mPresenter;
     protected View mRootView;

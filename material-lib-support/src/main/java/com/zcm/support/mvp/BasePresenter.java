@@ -1,5 +1,10 @@
 package com.zcm.support.mvp;
 
+import android.support.annotation.Nullable;
+
+import java.lang.ref.Reference;
+import java.lang.ref.WeakReference;
+
 import de.greenrobot.event.EventBus;
 
 /**
@@ -8,15 +13,16 @@ import de.greenrobot.event.EventBus;
 
 public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
     protected final String TAG=this.getClass().getSimpleName();
-    protected V view;
+    protected Reference<V> viewRef;
     protected Rxmanager rxmanager;
     public BasePresenter(V view){
-        this.view=view;
+        viewRef=new WeakReference<V>(view);
         rxmanager=new Rxmanager();
     }
 
+    @Nullable
     public V getView() {
-        return view;
+        return viewRef==null?null:viewRef.get();
     }
     /**
      * 是否使用eventBus,默认为使用(false)，
@@ -34,8 +40,9 @@ public class BasePresenter<V extends IBaseView> implements IPresenter<V> {
 
     @Override
     public void onDestroy() {
-        if (view!=null){
-           view=null;
+        if (viewRef!=null){
+            viewRef.clear();
+           viewRef=null;
         }
         if (useEventBus())//如果要使用eventbus请将此方法返回true
             EventBus.getDefault().unregister(this);//解除注册eventbus
