@@ -49,6 +49,8 @@ public class TestActivity extends THBaseActivity {
         setActivityTitle(R.string.app_name);
         setSwipeBackEnable(false);
         bt_title.getLeftTextView().setVisibility(View.GONE);
+        Bitmap bitmap=  getIntent().getExtras().getParcelable("bitmap");
+        Log.e(TAG, "onCreate: "+bitmap);
         addItem();
         setView();
         setReceiver();

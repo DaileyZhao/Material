@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.zcm.support.base.BaseActivity;
 import com.zcm.support.mvp.BasePresenter;
+import com.zcm.support.widget.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,12 +19,15 @@ import butterknife.OnClick;
 public class BBSActivity extends BaseActivity {
     @BindView(R2.id.demo_text)
     TextView demo_text;
+    @BindView(R2.id.circle_image)
+    CircleImageView circleImageView;
     String strExt;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bbs);
         strExt = getIntent().getStringExtra("name");
+        circleImageView.setImageDrawable(getResources().getDrawable(R.drawable.hugh));
     }
 
     @Override

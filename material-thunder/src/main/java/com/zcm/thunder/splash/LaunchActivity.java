@@ -1,6 +1,8 @@
 package com.zcm.thunder.splash;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -14,6 +16,8 @@ import com.zcm.support.imageselect.ImageLoaderOptions;
 import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
 import com.zcm.thunder.test.TestActivity;
+
+import junit.framework.Test;
 
 import butterknife.BindView;
 
@@ -60,7 +64,16 @@ public class LaunchActivity extends THBaseActivity<LaunchView,LaunchPresenter> i
         showToast(errormsg);
     }
     private void gotoMain(){
-        handler.postDelayed(() -> {startActivity(new Intent(LaunchActivity.this,TestActivity.class));
+        handler.postDelayed(() -> {
+            img_splash.setDrawingCacheEnabled(true);
+            Intent intent=new Intent();
+            Bitmap bitmap= BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher);
+            Log.e(TAG, "gotoMain: "+bitmap);
+            Bundle bundle=new Bundle();
+            bundle.putParcelable("bitmap",bitmap);
+            intent.putExtras(bundle);
+            intent.setClass(LaunchActivity.this, TestActivity.class);
+            startActivity(intent);
             finish();},5000);
     }
 }
