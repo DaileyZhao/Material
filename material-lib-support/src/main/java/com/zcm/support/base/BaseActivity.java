@@ -18,6 +18,7 @@ import com.zcm.support.R;
 import com.zcm.support.basetitle.BaseTitleView;
 import com.zcm.support.mvp.BasePresenter;
 import com.zcm.support.mvp.IBaseView;
+import com.zcm.support.permission.PermissionsActivity;
 import com.zcm.support.swipebacklayout.SwipeBackActivityBase;
 import com.zcm.support.swipebacklayout.SwipeBackActivityHelper;
 import com.zcm.support.swipebacklayout.SwipeBackLayout;
@@ -205,6 +206,13 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
             fm_title.addView(view);
         }
     }
+    protected void showActivityTitle(boolean isShow){
+        if (isShow){
+            bt_title.setVisibility(View.VISIBLE);
+        }else {
+            bt_title.setVisibility(View.GONE);
+        }
+    }
     protected FrameLayout getFl_titleBar(){
         return fm_title;
     }
@@ -232,5 +240,8 @@ public abstract class BaseActivity<V extends IBaseView,P extends BasePresenter<V
         ActivityRoute activityRoute = (ActivityRoute) Router.getRoute(url,params);
         activityRoute.withOpenMethodStartForResult(this, requestCode)
                 .open();
+    }
+    protected void requiredPermission(int requestCode, String... permissions){
+        PermissionsActivity.startActivityForResult(this,requestCode,permissions);
     }
 }

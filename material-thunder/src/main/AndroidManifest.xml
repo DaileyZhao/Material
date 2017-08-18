@@ -18,6 +18,7 @@
         <service android:name=".test.TestService"/>
         <activity android:name=".service.BindActivity"/>
         <activity android:name=".banner.BannerTestAct"/>
+        <activity android:name=".main.MainActivity"/>
     </application>
 
 </manifest>

@@ -9,7 +9,7 @@ ext{
     ]
 
     version = [
-            androidSupportSdkVersion: "24.2.0",
+            androidSupportSdkVersion: "25.0.0",
             retrofitSdkVersion      : "2.1.0",
             butterknifeSdkVersion   : "8.4.0",
             okhttpSdkVersion        : "3.4.1",
@@ -56,6 +56,7 @@ ext{
             "retrofit-adapter-rxjava2" : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
             "okhttp"                   : "com.squareup.okhttp3:okhttp:${version["okhttpSdkVersion"]}",
             "okhttp-logging-interceptor": "com.squareup.okhttp3:logging-interceptor:${version["okhttpSdkVersion"]}",
+            "volley"                   : "com.android.volley:volley:1.0.0",
             //image
             "glide-okhttp"             : "com.github.bumptech.glide:okhttp3-integration:1.4.0@aar",
             "glide"                    : "com.github.bumptech.glide:glide:${version["glideSdkVersion"]}",

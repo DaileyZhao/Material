@@ -15,9 +15,7 @@ import com.zcm.support.imageselect.ImageLoaderManager;
 import com.zcm.support.imageselect.ImageLoaderOptions;
 import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
-import com.zcm.thunder.test.TestActivity;
-
-import junit.framework.Test;
+import com.zcm.thunder.main.MainActivity;
 
 import butterknife.BindView;
 
@@ -35,7 +33,7 @@ public class LaunchActivity extends THBaseActivity<LaunchView,LaunchPresenter> i
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launch);
-        bt_title.setVisibility(View.GONE);
+        showActivityTitle(false);
         handler=new Handler();
         mPresenter.getPic();
     }
@@ -72,7 +70,7 @@ public class LaunchActivity extends THBaseActivity<LaunchView,LaunchPresenter> i
             Bundle bundle=new Bundle();
             bundle.putParcelable("bitmap",bitmap);
             intent.putExtras(bundle);
-            intent.setClass(LaunchActivity.this, TestActivity.class);
+            intent.setClass(LaunchActivity.this, MainActivity.class);
             startActivity(intent);
             finish();},5000);
     }

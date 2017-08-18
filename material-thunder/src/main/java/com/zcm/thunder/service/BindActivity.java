@@ -51,8 +51,6 @@ public class BindActivity extends THBaseActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, LocalService.class);
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
     @Override
@@ -65,6 +63,9 @@ public class BindActivity extends THBaseActivity {
     }
 
     public void onClick(View view){
+        Intent intent = new Intent(this, LocalService.class);
+        //bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+        startService(intent);
         Log.d(TAG, "onClick: "+mBound);
         if (mBound) {
             // Call a method from the LocalService.
