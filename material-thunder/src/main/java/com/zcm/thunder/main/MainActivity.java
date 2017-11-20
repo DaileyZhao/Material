@@ -3,8 +3,6 @@ package com.zcm.thunder.main;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
-import android.widget.FrameLayout;
-
 import com.zcm.thunder.R;
 import com.zcm.thunder.THBaseActivity;
 
@@ -15,8 +13,6 @@ import butterknife.BindView;
  */
 
 public class MainActivity extends THBaseActivity<MainView,MainPresenter> {
-    @BindView(R.id.fl_container)
-    FrameLayout fl_container;
     @BindView(R.id.navigation)
     BottomNavigationView navigation;
     @Override
