@@ -6,15 +6,15 @@ if (isModule.toBoolean()) {
 }
 apply plugin: 'android-apt'
 android {
-    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
-    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"] as int
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"] as String
 
     defaultConfig {
-        minSdkVersion rootProject.ext.android["minSdkVersion"]
-        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
-        versionCode rootProject.ext.android["versionCode"]
-        versionName rootProject.ext.android["versionName"]
-        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+        minSdkVersion rootProject.ext.android["minSdkVersion"] as int
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"] as int
+        versionCode rootProject.ext.android["versionCode"] as int
+        versionName rootProject.ext.android["versionName"] as String
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"] as String
 
     }
     buildTypes {
