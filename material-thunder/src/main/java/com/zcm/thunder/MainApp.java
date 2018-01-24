@@ -1,6 +1,8 @@
 package com.zcm.thunder;
 
 import android.app.Activity;
+import android.content.Context;
+import android.util.Log;
 
 import com.zcm.bbs.BBSActivity;
 import com.zcm.discovery.DiscoveryActivity;
@@ -15,6 +17,12 @@ import java.util.Map;
  */
 
 public class MainApp extends BaseApplication {
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        Log.e(TAG, "attachBaseContext: "+base );
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();

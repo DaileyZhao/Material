@@ -1,1 +1,1 @@
-include ':material-thunder', ':material-lib-support', ':material-lib-bbs', ':material-lib-discovery', ':material-lib-discovery'
+include ':material-thunder', ':material-lib-support', ':material-lib-bbs', ':material-lib-discovery', ':material-lib-discovery', ':java-source-test'
