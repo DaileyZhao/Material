@@ -1,8 +1,7 @@
-package com.thunder.runoob;
+package com.algorithm.java;
 
-/**
- * Create by zcm on 2018/5/8 下午2:55
- */
+import java.util.Arrays;
+
 public class Algorithm {
     /*
      * 规律：首先选取数组中右上角的数字。如果该数字等于要查找的数字，查找过程结束：
@@ -55,7 +54,49 @@ public class Algorithm {
         return str.toString();
     }
 
+    /**
+     * 归并排序
+     * @param arr
+     */
+    public static void mergeSort(int[] arr){
+        int[] temp=new int[arr.length];//在排序前，先定义好一个临时数组，避免递归中频繁开辟空间
+        sort(arr,0,arr.length-1,temp);
+    }
+    private static void sort(int[] arr,int left,int right,int []temp){
+        if (left<right){
+            int mid=(left+right)/2;
+            sort(arr, left, mid, temp);
+            sort(arr, mid+1, right, temp);
+            merge(arr,left,mid,right,temp);
+        }
+    }
+    private static void merge(int[] arr,int left,int mid,int right,int[] temp){
+        int i = left;//左序列指针
+        int j = mid+1;//右序列指针
+        int t = 0;//临时数组指针
+        while (i<=mid && j<=right){
+            if(arr[i]<=arr[j]){
+                temp[t++] = arr[i++];
+            }else {
+                temp[t++] = arr[j++];
+            }
+        }
+        while(i<=mid){//将左边剩余元素填充进temp中
+            temp[t++] = arr[i++];
+        }
+        while(j<=right){//将右序列剩余元素填充进temp中
+            temp[t++] = arr[j++];
+        }
+        t = 0;
+        //将temp中的元素全部拷贝到原数组中
+        while(left <= right){
+            arr[left++] = temp[t++];
+        }
+    }
     public static void main(String args[]){
+        int []arr = {9,8,7,6,5,4,3,2,1};
+        mergeSort(arr);
+        System.out.println(Arrays.toString(arr));
         int[][] matrix = {
                 {1, 2, 8, 9},
                 {2, 4, 9, 12},
@@ -66,4 +107,5 @@ public class Algorithm {
         StringBuffer str=new StringBuffer("   ");
         System.out.println(""+replaceSpace(str)+"");
     }
+
 }
